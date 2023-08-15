@@ -79,8 +79,8 @@ export default function Home() {
                 { author: "Beanca T", title: "New Article 1", subheader: "June 2, 2023", content: "Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus." },
                 { author: "James M", title: "New Article 2", subheader: "July 2, 2023", content: "Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla." },
                 { author: "Henry S", title: "New Article 3", subheader: "Aug 2, 2023", content: "Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede." },
-              ].map((item) => (
-                <Grid item xs={12} md={4}>
+              ].map((item, i) => (
+                <Grid item xs={12} md={4} key={i}>
                   <EventHome {...item} />
                 </Grid>
               ))}

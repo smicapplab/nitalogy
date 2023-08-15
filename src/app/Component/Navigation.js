@@ -11,13 +11,20 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import { useRouter } from "next/navigation";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = [
+  { label: "Home", url: "/" },
+  { label: "Articles", url: "" },
+  { label: "Advocacy & Actions", url: "/advocacy-action" },
+  { label: "About Us", url: "" },
+];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export default function Navigation() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const router = useRouter();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -37,9 +44,9 @@ export default function Navigation() {
   return (
     <AppBar sx={{ backgroundColor: "#ffffff" }}>
       <Container maxWidth="xl">
-        <Toolbar disableGutters >
+        <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, mr: 1 }}>
-            <img src="images/logo.png" alt="logo" className="h-16"/>
+            <img src="images/logo.png" alt="logo" className="h-16" />
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -50,7 +57,7 @@ export default function Navigation() {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon className="text-black"/>
+              <MenuIcon className="text-black" />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -71,24 +78,24 @@ export default function Navigation() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem onClick={handleCloseNavMenu} key={page.label}>
+                  <Typography textAlign="center">{page.label}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, mr: 2 }}>
-            <img src="images/logo.png" alt="logo" className="h-16"/>
+            <img src="images/logo.png" alt="logo" className="h-16" />
           </Box>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "black", display: "block" }}
+                key={page.label}
+                sx={{ my:2, color: "black", display: "block", textTransform: "none", marginRight: 6 }}
+                onClick={() => router.push(page.url)}
               >
-                {page}
+                {page.label}
               </Button>
             ))}
           </Box>
