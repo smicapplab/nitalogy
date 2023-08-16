@@ -14,6 +14,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const pages = [
   { label: "Home", url: "../iteration1" },
@@ -46,7 +47,7 @@ export default function Navigation() {
   };
 
   useEffect(() => {
-    const localUser = localStorage.getItem("user");
+    const localUser = localStorage.getItem("localUser");
     if (localUser) {
       setLoggedInUser(JSON.parse(localUser));
     }
@@ -57,10 +58,20 @@ export default function Navigation() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, mr: 1 }}>
-            <img src="../images/logo.png" alt="logo" className="h-16" />
-            <h1 className="text-black font-bold pt-5 text-lg">
-              Behind The Screen
-            </h1>
+            <img
+              src="../images/logo.png"
+              alt="logo"
+              className="h-16 cursor-pointer"
+              onClick={() => router.push("/iteration1")}
+            />
+            <Button
+              onClick={() => router.push("/iteration1")}
+              sx={{ textTransform: "none" }}
+            >
+              <h1 className="text-black font-bold pt-5 text-lg">
+                Behind The Screen
+              </h1>
+            </Button>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -124,7 +135,7 @@ export default function Navigation() {
             <Box sx={{ flexGrow: 0, paddingLeft: 5 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" />
+                  <Avatar alt={loggedInUser.firstName || ""} />
                 </IconButton>
               </Tooltip>
               <Menu

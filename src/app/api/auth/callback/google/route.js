@@ -12,24 +12,22 @@ export async function POST(req) {
       }
     );
 
-    const token = jwt.sign(
-      {
-        firstName: userInfo.data.given_name,
-        lastName: userInfo.data.family_name,
-        email: userInfo.data.email,
-      },
-      process.env.JWT_TOKEN_SECRET,
-      {
-        expiresIn: "5h",
-      }
-    );
+    const data = {
+      firstName: userInfo.data.given_name,
+      lastName: userInfo.data.family_name,
+      email: userInfo.data.email,
+    };
+
+    const token = jwt.sign(data, process.env.JWT_TOKEN_SECRET, {
+      expiresIn: "5h",
+    });
 
     console.log("token", token);
     console.log("secret", process.env.JWT_TOKEN_SECRET);
 
     let response = NextResponse.json({
       success: true,
-      data: userInfo,
+      data,
     });
 
     response.cookies.set({
@@ -38,6 +36,7 @@ export async function POST(req) {
       httpOnly: true,
       maxAge: 28800,
     });
+
     return response;
   } catch (e) {
     console.error(e);
