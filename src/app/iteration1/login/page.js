@@ -4,16 +4,19 @@ import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useRef, useState } from "react";
-import { Box, Button, Card, CardContent, ThemeProvider } from "@mui/material";
+import { Box, Button, Card, CardContent, Divider, ThemeProvider } from "@mui/material";
 import Navigation from "../../Component/Navigation";
 import LightTheme from "../theme";
 import Footer from "../../Component/Footer";
 import GoogleIcon from "@mui/icons-material/Google";
+import FacebookIcon from '@mui/icons-material/Facebook';
 import { useFacebookLogin } from "react-facebook-login-hook";
 
 export default function Login() {
   const router = useRouter();
-  const { logIn, getProfile } = useFacebookLogin({ appId: process.env.NEXT_PUBLIC_FB_APP_ID });
+  const { logIn, getProfile } = useFacebookLogin({
+    appId: process.env.NEXT_PUBLIC_FB_APP_ID,
+  });
 
   const loginFb = async () => {
     const response = await logIn();
@@ -49,7 +52,7 @@ export default function Login() {
               <CardContent className="pl-36 pr-36 text-center">
                 <p className="text-lg font-bold pb-10">Login</p>
                 <Button
-                  className="bg-red-600 text-white"
+                  sx={{ backgroundColor: "#DB4437", color: "white" }}
                   fullWidth
                   variant="outlined"
                   startIcon={<GoogleIcon />}
@@ -57,12 +60,12 @@ export default function Login() {
                 >
                   Login Using Google
                 </Button>
-
+                <Divider sx={{ paddingTop: 5 }}  />
                 <Button
-                  className="bg-blue-500 text-white mt-5"
+                   sx={{ backgroundColor: "#4267B2", color: "white" }}
                   fullWidth
                   variant="outlined"
-                  startIcon={<GoogleIcon />}
+                  startIcon={<FacebookIcon />}
                   onClick={() => loginFb()}
                 >
                   Login Using Facebook

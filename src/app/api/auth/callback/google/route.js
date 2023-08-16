@@ -12,47 +12,33 @@ export async function POST(req) {
       }
     );
 
-    console.log("userInfo", userInfo);
+    const token = jwt.sign(
+      {
+        firstName: userInfo.data.given_name,
+        lastName: userInfo.data.family_name,
+        email: userInfo.data.email,
+      },
+      process.env.JWT_TOKEN_SECRET,
+      {
+        expiresIn: "5h",
+      }
+    );
 
-    // const token = jwt.sign(
-    //   {
-    //     firstName: userInfo.data.given_name,
-    //     lastName: userInfo.data.family_name,
-    //     email: userInfo.data.email,
-    //   },
-    //   process.env.JWT_TOKEN_SECRET,
-    //   {
-    //     expiresIn: "5h",
-    //   }
-    // );
-    // const res = await axios.post(
-    //   `${process.env.LAMBDA_URL}/prod/do-login`,
-    //   {
-    //     token: token,
-    //   },
-    //   {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   }
-    // );
+    console.log("token", token);
+    console.log("secret", process.env.JWT_TOKEN_SECRET);
 
-    // const response = NextResponse.json({
-    //   success: true,
-    //   data: res.data,
-    // });
+    let response = NextResponse.json({
+      success: true,
+      data: userInfo,
+    });
 
-    // console.log("token", token);
-    // console.log("secret", process.env.JWT_TOKEN_SECRET);
-    // response.cookies.set({
-    //   name: "jwt",
-    //   value: res.data.token,
-    //   httpOnly: true,
-    //   maxAge: 28800,
-    // });
-    // return response;
-
-    return {};
+    response.cookies.set({
+      name: "jwt",
+      value: token,
+      httpOnly: true,
+      maxAge: 28800,
+    });
+    return response;
   } catch (e) {
     console.error(e);
     return NextResponse.json({ success: false, error: e });
