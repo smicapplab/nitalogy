@@ -59,7 +59,7 @@ export default function Navigation() {
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, mr: 1 }}>
             <img
-              src="../images/logo.png"
+              src="/images/logo.png"
               alt="logo"
               className="h-16 cursor-pointer"
               onClick={() => router.push("/iteration1")}
@@ -111,7 +111,7 @@ export default function Navigation() {
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, mr: 2 }}>
-            <img src="images/logo.png" alt="logo" className="h-16" />
+            <img src="/images/logo.png" alt="logo" className="h-16" />
           </Box>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
@@ -135,7 +135,7 @@ export default function Navigation() {
             <Box sx={{ flexGrow: 0, paddingLeft: 5 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt={loggedInUser.firstName || ""} />
+                  <Avatar alt={loggedInUser.name || ""} />
                 </IconButton>
               </Tooltip>
               <Menu

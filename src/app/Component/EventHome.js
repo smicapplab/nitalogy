@@ -12,7 +12,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { stringAvatar } from "../helper/avatarHelper";
+import { stringAvatar } from "../../helper/avatarHelper";
 
 export default function EventHome({ 
     author = "Beanca",
@@ -39,7 +39,7 @@ export default function EventHome({
       <CardMedia
         component="img"
         height="194"
-        image="images/banner1.png"
+        image="/images/banner1.png"
         alt="Paella dish"
       />
       <CardContent>

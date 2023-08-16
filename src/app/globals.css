@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer utilities {
-  @variants responsive {
     /* Hide scrollbar for Chrome, Safari and Opera */
     .no-scrollbar::-webkit-scrollbar {
       display: none;
@@ -14,7 +13,7 @@
       -ms-overflow-style: none; /* IE and Edge */
       scrollbar-width: none; /* Firefox */
     }
-  }
+  
 }
 
 :root {
@@ -33,4 +32,9 @@
 
 body {
   background-color: #ececec;
+}
+
+h1{
+  font-weight: 700;
+  padding-top: 10px;
 }

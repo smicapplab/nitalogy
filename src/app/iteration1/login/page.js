@@ -29,6 +29,20 @@ export default function Login() {
     const response = await logIn();
     const profile = await getProfile();
     console.log("profile", profile);
+    const { data } = await axios.post("/api/auth/callback/facebook", {
+      name: profile.name,
+      email: profile.email,
+    });
+
+    if (data.success && data.data) {
+      localStorage.setItem("localUser", JSON.stringify(data.data));
+      router.push("/iteration1");
+    } else {
+      addToast({
+        message: data.message ?? data.data.message,
+        type: "error",
+      });
+    }
   };
 
   const loginGoogle = useGoogleLogin({
@@ -56,7 +70,9 @@ export default function Login() {
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="container max-w-screen-sm pt-36 ">
             <Card variant="outlined">
-              <CardContent sx={{ paddingLeft: 15, paddingRight: 15, textAlign: "center" }}>
+              <CardContent
+                sx={{ paddingLeft: 15, paddingRight: 15, textAlign: "center" }}
+              >
                 <p className="text-lg font-bold pb-10">Login</p>
                 <Button
                   sx={{ backgroundColor: "#DB4437", color: "white" }}

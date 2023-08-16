@@ -1,0 +1,17 @@
+export const articles = [
+    {
+        "title": "What is Poverty Porn? Understanding the Controversial Media Phenomenon",
+        "author": "Beanca Torrefranca",
+        "date": "Aug 16, 2023",
+        "brief": "In the dynamic realm of media and storytelling, a disturbing trend known as <strong>Poverty Porn</strong> has emerged, causing ripples of concern among audiences, creators, and advocates alike. This phenomenon revolves around the exploitation of impoverished and marginalized communities to garner attention, evoke emotions, and sometimes even boost sales...",
+        "content": `<p>In the dynamic realm of media and storytelling, a disturbing trend known as <strong>Poverty Porn</strong> has emerged, causing ripples of concern among audiences, creators, and advocates alike. This phenomenon revolves around the exploitation of impoverished and marginalized communities to garner attention, evoke emotions, and sometimes even boost sales. In an era where media influence is profound, it's crucial to dissect the intricate layers of this issue and understand its implications. </p>
+            <h1>Defining Poverty Porn</h1>
+            <p>At its core, Poverty Porn encompasses the utilization of poverty-stricken individuals and communities for personal or organizational gain. Artists, content creators, and even nonprofits may resort to this strategy, often resorting to romanticizing or capitalizing on the struggles of those in disadvantaged conditions. The exploitation extends to imagery as well – stark images of destitution and despair are wielded as tools to tug at heartstrings and open wallets. Such imagery includes news stories, visual representations, symbols, myths, and discourses, all woven together to construct a narrative that portrays poverty in a specific light.</p>
+            <h1>Manipulation for Attention</h1>
+            <p>Ergul points out that mainstream and new media platforms have a significant role to play in perpetuating these portrayals. Whether inadvertently or intentionally, they contribute to the dissemination of stereotypes surrounding poverty. These platforms encompass a wide spectrum, from the juggernauts like Facebook, YouTube, and Instagram, to the more contemporary players like TikTok, Twitter, and Reddit. The range of content is expansive – spanning from posts to videos, photos to news clippings, stories to comments, and everything in between. The ethical questions surrounding Poverty Porn, especially when it emerges from nonprofits and charities, highlight the fine line between awareness-raising and exploitation.</p>
+            <h1>Media Creators: Pawns or Players?</h1>
+            <p>Nacar shines a spotlight on an intriguing facet of this phenomenon – its resonance within the realm of YouTube content creation. The term 'Poverty Porn' is often linked with creators who document and sometimes sensationalize the hardships of poverty-ridden slums and stories of struggle from street vendors. The targeted audience, in this case, is not just passive viewers but the very creators themselves. This prompts an exploration into the motivations and justifications that lead YouTube creators to produce such content, making them a central component of this discourse.</p>`,
+        "image": "/images/articles/Understanding Poverty Porn - Article 1.png",
+        likes: 10,
+    }
+]

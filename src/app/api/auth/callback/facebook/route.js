@@ -4,17 +4,10 @@ import jwt from "jsonwebtoken";
 
 export async function POST(req) {
   try {
-    const { access_token } = await req.json();
-    const userInfo = await axios.get(
-      "https://www.googleapis.com/oauth2/v3/userinfo",
-      {
-        headers: { Authorization: `Bearer ${access_token}` },
-      }
-    );
-
+    const { name, email } = await req.json();
     const data = {
-      name: `${userInfo.data.given_name} ${userInfo.data.family_name}`,
-      email: userInfo.data.email,
+      name,
+      email,
     };
 
     const token = jwt.sign(data, process.env.JWT_TOKEN_SECRET, {
