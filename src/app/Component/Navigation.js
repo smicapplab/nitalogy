@@ -1,4 +1,6 @@
-import { useState } from "react";
+"use client";
+
+import { useState, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -14,9 +16,9 @@ import MenuItem from "@mui/material/MenuItem";
 import { useRouter } from "next/navigation";
 
 const pages = [
-  { label: "Home", url: "/" },
+  { label: "Home", url: "../iteration1" },
   { label: "Articles", url: "" },
-  { label: "Advocacy & Actions", url: "/advocacy-action" },
+  { label: "Advocacy & Actions", url: "iteration1/advocacy-action" },
   { label: "About Us", url: "" },
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -24,6 +26,8 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 export default function Navigation() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
   const router = useRouter();
 
   const handleOpenNavMenu = (event) => {
@@ -41,12 +45,22 @@ export default function Navigation() {
     setAnchorElUser(null);
   };
 
+  useEffect(() => {
+    const localUser = localStorage.getItem("user");
+    if (localUser) {
+      setLoggedInUser(JSON.parse(localUser));
+    }
+  }, []);
+
   return (
     <AppBar sx={{ backgroundColor: "#ffffff" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, mr: 1 }}>
-            <img src="images/logo.png" alt="logo" className="h-16" />
+            <img src="../images/logo.png" alt="logo" className="h-16" />
+            <h1 className="text-black font-bold pt-5 text-lg">
+              Behind The Screen
+            </h1>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -92,7 +106,13 @@ export default function Navigation() {
             {pages.map((page) => (
               <Button
                 key={page.label}
-                sx={{ my:2, color: "black", display: "block", textTransform: "none", marginRight: 6 }}
+                sx={{
+                  my: 2,
+                  color: "black",
+                  display: "block",
+                  textTransform: "none",
+                  marginRight: 6,
+                }}
                 onClick={() => router.push(page.url)}
               >
                 {page.label}
@@ -100,35 +120,52 @@ export default function Navigation() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0, paddingLeft: 5 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+          {loggedInUser ? (
+            <Box sx={{ flexGrow: 0, paddingLeft: 5 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting) => (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+          ) : (
+            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <Button
+                sx={{
+                  my: 2,
+                  color: "black",
+                  display: "block",
+                  textTransform: "none",
+                  marginRight: 6,
+                }}
+                onClick={() => router.push("/iteration1/login")}
+              >
+                Login
+              </Button>
+            </Box>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

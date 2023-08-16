@@ -14,7 +14,7 @@ import { format } from "date-fns";
 export default function ImgMediaCard({ userEvent }) {
   const { image, title, description, date, location, link } = userEvent;
   return (
-    <Card sx={{ minWidth: 345, marginRight: 2 }}>
+    <Card sx={{ minWidth: 345, margin: 1 }}>
       <CardMedia component="img" alt={title} height="140" image={image} />
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">

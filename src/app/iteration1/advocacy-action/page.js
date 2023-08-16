@@ -1,20 +1,10 @@
 "use client";
 
 import { Fragment, useEffect, useRef, useState } from "react";
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  Grid,
-  ThemeProvider,
-} from "@mui/material";
-import Navigation from "../Component/Navigation";
+import { Box, Button, ThemeProvider } from "@mui/material";
+import Navigation from "../../Component/Navigation";
 import LightTheme from "../theme";
-import Footer from "../Component/Footer";
+import Footer from "../../Component/Footer";
 import ImgMediaCard from "./EventCard";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -51,20 +41,14 @@ export default function AdvocacyAndAction() {
   }, []);
 
   return (
-    <ThemeProvider
-      theme={LightTheme}
-      containerClass="carousel-container"
-      removeArrowOnDeviceType={["tablet", "mobile"]}
-      dotListClass="custom-dot-list-style"
-      itemClass="carousel-item-padding-40-px"
-    >
+    <ThemeProvider theme={LightTheme}>
       <Fragment>
         <Navigation />
         {userEvents && (
           <Box display="flex" justifyContent="center" alignContent="center">
-            <div className="container max-w-screen-xl pt-36 pl-5 pr-5">
+            <div className="container max-w-screen-xl pt-36 ">
               <h2 className="font-bold text-lg">Upcoming Events</h2>
-              <div className="container flex flex-row w-full pl-5 pr-5 ">
+              <div className="container flex flex-row w-full ">
                 <ArrowBackIosIcon
                   onClick={() => scroll(-520)}
                   className="relative top-48 left-1 cursor-pointer"
@@ -81,6 +65,10 @@ export default function AdvocacyAndAction() {
                   onClick={() => scroll(+520)}
                   className="relative top-48 right-1 cursor-pointer"
                 />
+              </div>
+              <div className="flex flex-grow justify-between pl-5 pr-5">
+                <Button>Add New</Button>
+                <Button>View More</Button>
               </div>
             </div>
           </Box>

@@ -2,8 +2,10 @@
 
 import { Fragment, lazy } from "react";
 
-import Navigation from "./Component/Navigation";
-import Hero from "./Component/Hero";
+import Navigation from "../Component/Navigation";
+import Hero from "../Component/Hero";
+import EventHome from "../Component/EventHome";
+import LightTheme from "./theme";
 import {
   Box,
   Button,
@@ -15,9 +17,8 @@ import {
   Grid,
   ThemeProvider,
 } from "@mui/material";
-import EventHome from "./Component/EventHome";
-import LightTheme from "./theme";
-const Footer = lazy(() => import("./Component/Footer"));
+
+const Footer = lazy(() => import("../Component/Footer"));
 
 export default function Home() {
   return (
