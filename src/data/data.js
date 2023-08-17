@@ -15,7 +15,7 @@ export const articles = [
             <p>Ergul points out that mainstream and new media platforms have a significant role to play in perpetuating these portrayals. Whether inadvertently or intentionally, they contribute to the dissemination of stereotypes surrounding poverty. These platforms encompass a wide spectrum, from the juggernauts like Facebook, YouTube, and Instagram, to the more contemporary players like TikTok, Twitter, and Reddit. The range of content is expansive – spanning from posts to videos, photos to news clippings, stories to comments, and everything in between. The ethical questions surrounding Poverty Porn, especially when it emerges from nonprofits and charities, highlight the fine line between awareness-raising and exploitation.</p>
             <h1>Media Creators: Pawns or Players?</h1>
             <p>Nacar shines a spotlight on an intriguing facet of this phenomenon – its resonance within the realm of YouTube content creation. The term 'Poverty Porn' is often linked with creators who document and sometimes sensationalize the hardships of poverty-ridden slums and stories of struggle from street vendors. The targeted audience, in this case, is not just passive viewers but the very creators themselves. This prompts an exploration into the motivations and justifications that lead YouTube creators to produce such content, making them a central component of this discourse.</p>`,
-    image: "/images/articles/Understanding Poverty Porn - Article 1.png",
+    image: "/images/articles/Article1.png",
     likes: 10,
   },
   {
@@ -35,7 +35,7 @@ export const articles = [
         <p>Now, let's talk about something that's the opposite of a funfair– normalizing suffering. It's like a stealthy guest that sneaks into our minds without an invitation. You've seen it– disaster strikes, and there they are, grinning like they're on a red carpet. We've become so used to it that we forget those smiles might just be masks. This sneaky cycle erodes our empathy and lets those in power off the hook. Public servants might think they're ace-ing disaster management because we're clapping for their media-ready performances.</p>
         <p>While Compassion Fatigue might try to dampen our emotional responses, remember that behind those repetitive images and scripted smiles lie real stories of resilience and challenges.</p>
         `,
-    image: "/images/articles/Understanding Poverty Porn - Article 2.PNG",
+    image: "/images/articles/Article2.png",
     likes: 5,
   },
   {
@@ -54,7 +54,7 @@ export const articles = [
     <p>Amid the chatter about "Poverty Porn," there's a method to the madness. By shining a spotlight on those in need, the media provides a stage for their stories. Think about it! A struggling soul in a remote corner of the world suddenly gets a chance to tell their tale to a global audience. Their struggles, their triumphs, their voices amplified by the digital megaphone. It's like empowerment meets empathy on a grand scale. As the media circus challenges our perceptions, it's a call for empathy, understanding, and societal transformation.</p>
     <h1>A Subtle Power</h1>
     <p>It's not just about flashy headlines or tear-jerking images; it's about dismantling preconceived notions about poverty. By shattering the illusions we've built around marginalized communities, it forces us to confront the real face of adversity. With a sprinkle of empathy, it paves the way for discussions that matter, policy changes that count, and collective efforts to tackle the root causes of inequality. When approached thoughtfully, it's like a reality check that propels us towards societal change. The image has to come from somewhere, after all.</p>`,
-    image: "/images/articles/Understanding Poverty Porn - Article 3.png",
+    image: "/images/articles/Article3.png",
     likes: 52,
   },
   {
