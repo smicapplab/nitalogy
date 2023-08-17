@@ -6,6 +6,7 @@ import {
   Card,
   CardContent,
   CardMedia,
+  Grid,
   IconButton,
   ThemeProvider,
 } from "@mui/material";
@@ -16,9 +17,11 @@ import Footer from "../../Component/Footer";
 import { articles } from "@/data/data";
 import { useRouter, useSearchParams } from "next/navigation";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import ArticleCardMain from "@/app/Component/ArticleCardMain";
 
 export default function Article() {
   const [article, setArticle] = useState();
+  const [relatedArticles, setRelatedArticles] = useState();
   const [liked, setLiked] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -26,23 +29,21 @@ export default function Article() {
 
   const likeArticle = () => {
     if (liked) {
-      localStorage.removeItem("articlesLiked");
-      setLiked(false);
+      localStorage.removeItem(`la${index}`);
     } else {
-      const articlesLiked = localStorage.getItem("articlesLiked");
-
-      localStorage.setItem(
-        "articlesLiked",
-        JSON.stringify([JSON.parse(articlesLiked), index])
-      );
-      setLiked(true);
+      localStorage.setItem(`la${index}`, `la${index}`);
     }
+    setLiked(!liked);
   };
 
   useEffect(() => {
     if (index) {
       if (articles[index]) {
-        setArticle(articles[index]);
+        const _article = articles[index];
+        setArticle(_article);
+
+        const related = articles.filter((a) => a.section === _article.section);
+        setRelatedArticles(related);
       } else {
         router.push(`/iteration1`);
       }
@@ -50,11 +51,9 @@ export default function Article() {
       router.push(`/iteration1`);
     }
 
-    const articlesLiked = localStorage.getItem("articlesLiked");
+    const articlesLiked = localStorage.getItem(`la${index}`);
     if (articlesLiked) {
-      if (JSON.parse(articlesLiked).includes(index)) {
-        setLiked(true);
-      }
+      setLiked(true);
     }
   }, []);
 
@@ -79,16 +78,25 @@ export default function Article() {
                   alt={article.title}
                 />
                 <CardContent>
-                  <ShareSocial 
+                  <ShareSocial
                     url={window.location.href}
-                    socialTypes={["facebook", "twitter", "whatsapp", "linkedin", "telegram", "reddit", "ok", "line"]}
-                    onSocialButtonClicked={ data => console.log(data)} 
+                    socialTypes={[
+                      "facebook",
+                      "twitter",
+                      "whatsapp",
+                      "linkedin",
+                      "telegram",
+                      "reddit",
+                      "ok",
+                      "line",
+                    ]}
+                    onSocialButtonClicked={(data) => console.log(data)}
                     style={{
                       root: {
                         border: "0px !important",
                         margin: 0,
                       },
-                      iconContainer:{
+                      iconContainer: {
                         backgroundColor: "red",
                       },
                       copyContainer: {
@@ -118,6 +126,20 @@ export default function Article() {
             <p>No comments yet</p>
           </div>
         </Box>
+        {relatedArticles && (
+          <Box display="flex" justifyContent="center" alignContent="center">
+            <div className="container max-w-screen-lg pt-20 ">
+              <Grid container spacing={2}>
+                {relatedArticles.map((a) => (
+                  <Grid item xs={12} md={6} xl={4} key={a.id}>
+                    <ArticleCardMain article={a} />
+                  </Grid>
+                ))}
+              </Grid>
+            </div>
+          </Box>
+        )}
+
         <Footer />
       </Fragment>
     </ThemeProvider>

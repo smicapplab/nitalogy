@@ -14,14 +14,16 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 const pages = [
   { label: "Home", url: "../iteration1" },
-  { label: "Articles", url: "" },
-  { label: "Advocacy & Actions", url: "iteration1/advocacy-action" },
-  { label: "About Us", url: "" },
+  { label: "Articles", url: "/iteration1/articles" },
+  { label: "Resources", url: "/iteration1/resources" },
+  { label: "Groups", url: "/iteration1/groups" },
+  { label: "About Us", url: "/iteration1/about-us" },
+  { label: "Contact Us", url: "/iteration1/contact-us" },
 ];
+
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export default function Navigation() {

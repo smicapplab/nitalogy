@@ -6,24 +6,15 @@ import Navigation from "../Component/Navigation";
 import Hero from "../Component/Hero";
 import EventHome from "../Component/EventHome";
 import LightTheme from "./theme";
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  Grid,
-  ThemeProvider,
-} from "@mui/material";
+import { Box, Button, Grid, ThemeProvider } from "@mui/material";
 import { articles } from "@/data/data";
 import { useRouter } from "next/navigation";
+import ArticleCard from "../Component/ArticleCard";
+import ArticleCardMain from "../Component/ArticleCardMain";
 const Footer = lazy(() => import("../Component/Footer"));
 
 export default function Home() {
   const router = useRouter();
-
   return (
     <ThemeProvider theme={LightTheme}>
       <Fragment>
@@ -31,41 +22,58 @@ export default function Home() {
         <Hero />
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="max-w-screen-lg pt-10 pl-5 pr-5">
-            <Card variant="outlined">
-              <CardContent>
-                <Grid container spacing={2}>
-                  <Grid item xs={12} md={6}>
-                    <CardMedia
-                      component="img"
-                      height="194"
-                      image={articles[0].image}
-                      alt="Paella dish"
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <CardHeader
-                      title={articles[0].title}
-                      subheader={
-                        <div className="flex justify-between">
-                          <span>{articles[0].author}</span>
-                          <span>{articles[0].date}</span>
-                        </div>
-                      }
-                    />
-                    <CardContent>
-                      <div
-                        dangerouslySetInnerHTML={{ __html: articles[0].brief }}
-                      />
-                    </CardContent>
-                    <CardActions>
-                      <Button size="small" onClick={() => router.push("/iteration1/article?index=0")}>
-                        Read More
-                      </Button>
-                    </CardActions>
-                  </Grid>
-                </Grid>
-              </CardContent>
-            </Card>
+            <p>
+              At <strong>Behind The Screen</strong>, we invite you to embark on
+              a journey that transcends the boundaries of traditional
+              understanding. Our platform is dedicated to shedding light on a
+              complex and often misunderstood issue: poverty porn.
+            </p>
+            <p>
+              In a world where information is easily accessible, we recognize
+              the power of media in shaping perspectives. However, we also
+              acknowledge the pitfalls that come with sensationalized narratives
+              that exploit the struggles of the less fortunate for shock value
+              or emotional manipulation.
+            </p>
+            <p>
+              Here, we strive for a different approach. Our goal is to foster
+              understanding, empathy, and genuine awareness about the realities
+              of poverty without exploiting the vulnerable. We believe in
+              sharing stories that honor the dignity and resilience of
+              individuals facing adversity while promoting informed discussions
+              that lead to sustainable solutions.
+            </p>
+            <p>
+              Join us in dismantling the misconceptions surrounding poverty and
+              its portrayal. Through thought-provoking articles, respectful
+              conversations, and insightful resources, we aim to challenge
+              perceptions, inspire change, and encourage a collective effort
+              towards a more equitable world.
+            </p>
+            <p>
+              Thank you for being a part of this journey towards compassionate
+              awareness. Your engagement and open-mindedness are vital as we
+              work together to create a positive impact that extends beyond the
+              digital realm.
+            </p>
+            <div className="text-center w-full pt-11">
+              <h1>Latest Articles</h1>
+            </div>
+            <ArticleCard article={articles[0]} />
+            <br />
+            <Grid container spacing={1}>
+              <Grid item xs={12} md={4}>
+                <ArticleCardMain article={articles[1]} noContent={true} />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <ArticleCardMain article={articles[4]} noContent={true} />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <ArticleCardMain article={articles[9]} noContent={true} />
+              </Grid>
+            </Grid>
+            <br/>
+            <Button variant="outlined" sx={{ textTransform: "none" }}>Browse Articles</Button>
             <div
               style={{
                 color: "#194175",
@@ -74,38 +82,6 @@ export default function Home() {
                 paddingTop: 50,
               }}
             >
-              <span className="text-center w-full">
-                <h1 className="text-black text-xl font-bold">Events</h1>
-              </span>
-              <Grid container spacing={2}>
-                {[
-                  {
-                    author: "Beanca T",
-                    title: "New Article 1",
-                    subheader: "June 2, 2023",
-                    content:
-                      "Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.",
-                  },
-                  {
-                    author: "James M",
-                    title: "New Article 2",
-                    subheader: "July 2, 2023",
-                    content:
-                      "Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla.",
-                  },
-                  {
-                    author: "Henry S",
-                    title: "New Article 3",
-                    subheader: "Aug 2, 2023",
-                    content:
-                      "Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede.",
-                  },
-                ].map((item, i) => (
-                  <Grid item xs={12} md={4} key={i}>
-                    <EventHome {...item} />
-                  </Grid>
-                ))}
-              </Grid>
             </div>
           </div>
         </Box>

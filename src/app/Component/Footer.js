@@ -33,10 +33,12 @@ export default function Footer() {
           }}
         >
           <Grid container spacing={2}>
+          <Grid item md={4}>
+            
+          </Grid>
             <Grid
               item
-              xs={12}
-              md={6}
+              md={4}
               sx={{ display: "flex", flexDirection: "column" }}
             >
               <h2 className="text-xl font-medium">Subscribe</h2>
@@ -70,26 +72,25 @@ export default function Footer() {
                 </FormControl>
               </div>
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item md={4}>
               <h2 className="text-xl font-medium">Contact Us</h2>
-              <p className="text-sm">
-                Stay Informed, Make a Difference: Subscribe to Our Newsletter
-              </p>
               <InputText
                 placeholder="Full Name"
                 onChange={() => {}}
                 name="fullName"
               />
               <InputText
-                placeholder="Full Name"
+                placeholder="Email Address"
                 onChange={() => {}}
-                name="fullName"
+                name="email"
               />
               <InputText
-                placeholder="Full Name"
+                rows={5}
+                placeholder="Message"
                 onChange={() => {}}
-                name="fullName"
+                name="message"
               />
+              <Button variant="contained" color="tertiary" sx={{ backgroundColor: "white" }}>Submit</Button>
             </Grid>
           </Grid>
         </Box>
