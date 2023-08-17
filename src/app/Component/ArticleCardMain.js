@@ -15,6 +15,14 @@ import { useRouter } from "next/navigation";
 export default function ArticleCardMain({ article, noContent = false }) {
   const router = useRouter();
 
+  const navigateTo =(url) => {
+    try{
+      window.location.href = url;
+    }catch(e){
+      console.log(e);
+    }
+  }
+
   return (
     <Card variant="outlined">
       <CardHeader
@@ -42,7 +50,7 @@ export default function ArticleCardMain({ article, noContent = false }) {
         <Button
           sx={{ textTransform: "none" }}
           size="small"
-          onClick={() => router.push(`/iteration1/article?index=${article.id}`)}
+          onClick={() => navigateTo(`/iteration1/article?index=${article.id}`)}
         >
           Read More
         </Button>

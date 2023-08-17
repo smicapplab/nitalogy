@@ -129,10 +129,11 @@ export default function Article() {
         {relatedArticles && (
           <Box display="flex" justifyContent="center" alignContent="center">
             <div className="container max-w-screen-lg pt-20 ">
+            <h1>Related Articles</h1>
               <Grid container spacing={2}>
                 {relatedArticles.map((a) => (
                   <Grid item xs={12} md={6} xl={4} key={a.id}>
-                    <ArticleCardMain article={a} />
+                    <ArticleCardMain article={a}/>
                   </Grid>
                 ))}
               </Grid>
