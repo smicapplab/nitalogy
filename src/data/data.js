@@ -35,7 +35,7 @@ export const articles = [
         <p>Now, let's talk about something that's the opposite of a funfair– normalizing suffering. It's like a stealthy guest that sneaks into our minds without an invitation. You've seen it– disaster strikes, and there they are, grinning like they're on a red carpet. We've become so used to it that we forget those smiles might just be masks. This sneaky cycle erodes our empathy and lets those in power off the hook. Public servants might think they're ace-ing disaster management because we're clapping for their media-ready performances.</p>
         <p>While Compassion Fatigue might try to dampen our emotional responses, remember that behind those repetitive images and scripted smiles lie real stories of resilience and challenges.</p>
         `,
-    image: "/images/articles/Understanding Poverty Porn - Article 2.png",
+    image: "/images/articles/Understanding Poverty Porn - Article 2.PNG",
     likes: 5,
   },
   {
