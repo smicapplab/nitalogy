@@ -1,11 +1,7 @@
 "use client";
 
-import { Fragment, useEffect, useRef } from "react";
-import {
-  Box,
-  Grid,
-  ThemeProvider,
-} from "@mui/material";
+import { Fragment, useEffect } from "react";
+import { Box, Grid, ThemeProvider } from "@mui/material";
 import Navigation from "../../Component/Navigation";
 import LightTheme from "../theme";
 import Footer from "../../Component/Footer";
@@ -13,7 +9,6 @@ import GroupCard from "./GroupCard";
 import { groups } from "@/data/data";
 
 export default function Groups() {
-
   useEffect(() => {}, []);
 
   return (

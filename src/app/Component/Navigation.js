@@ -15,7 +15,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useRouter } from "next/navigation";
 
-const pages = [
+export const pages = [
   { label: "Home", url: "../iteration1" },
   { label: "Articles", url: "/iteration1/articles" },
   { label: "Resources", url: "/iteration1/resources" },
@@ -71,7 +71,7 @@ export default function Navigation() {
               sx={{ textTransform: "none" }}
             >
               <h1 className="text-black font-bold pt-5 text-lg">
-                Behind The Screen
+                Behind The Screen Magazine
               </h1>
             </Button>
           </Box>

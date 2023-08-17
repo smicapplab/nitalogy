@@ -31,6 +31,7 @@ export default function FilmsCard({ film }) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  
   const openInNewTab = (url) => {
     window.open(url, "_blank", "noreferrer");
   };

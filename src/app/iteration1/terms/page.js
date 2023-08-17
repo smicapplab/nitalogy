@@ -1,7 +1,7 @@
 "use client";
 
-import { Fragment, useEffect, useRef, useState } from "react";
-import { Box, Button, Card, CardContent, ThemeProvider } from "@mui/material";
+import { Fragment } from "react";
+import { Box, Card, CardContent, ThemeProvider } from "@mui/material";
 import Navigation from "../../Component/Navigation";
 import LightTheme from "../theme";
 import Footer from "../../Component/Footer";
@@ -15,7 +15,7 @@ export default function Terms() {
           <div className="container max-w-screen-lg pt-36 ">
             <Card variant="outlined">
               <CardContent>
-                <h1 className="text-xl font-bold pb-10">Aug 15, 2023</h1>
+                <h1 className="text-xl font-bold">Aug 15, 2023</h1>
                 <p className="pb-5">
                   Welcome to the <strong>Behind The Screen</strong> website.
                 </p>
@@ -49,7 +49,7 @@ export default function Terms() {
                   </strong>
                 </p>
 
-                <h1 className="text-xl font-bold pb-10">Use of Website:</h1>
+                <h1 className="text-xl font-bold">Use of Website:</h1>
                 <p>
                   <ul>
                     <li>
@@ -73,37 +73,37 @@ export default function Terms() {
                   </ul>
                 </p>
 
-                <h1 className="text-xl font-bold pb-10">
-                  Disclaimer of Liability:
-                </h1>
+                <h1 className="text-xl font-bold">Disclaimer of Liability:</h1>
                 <p>
-                  <li>
-                    <strong>1. Accuracy of Information: </strong> The
-                    information provided on the Website is for educational and
-                    informational purposes only.{" "}
-                    <strong>De La Salle-College of Saint Benilde</strong> makes
-                    no warranties or representations regarding the accuracy,
-                    completeness, or reliability of the content. You use the
-                    content at your own risk.
-                  </li>
-                  <li>
-                    <strong>2. Third-Party Links:</strong> The Website may
-                    contain links to third-party websites.{" "}
-                    <strong>De La Salle-College of Saint Benilde</strong> is not
-                    responsible for the content, accuracy, or practices of these
-                    external sites. Any links provided do not imply endorsement
-                    or association with those websites.
-                  </li>
+                  <ul>
+                    <li>
+                      <strong>1. Accuracy of Information: </strong> The
+                      information provided on the Website is for educational and
+                      informational purposes only.{" "}
+                      <strong>De La Salle-College of Saint Benilde</strong>{" "}
+                      makes no warranties or representations regarding the
+                      accuracy, completeness, or reliability of the content. You
+                      use the content at your own risk.
+                    </li>
+                    <li>
+                      <strong>2. Third-Party Links:</strong> The Website may
+                      contain links to third-party websites.{" "}
+                      <strong>De La Salle-College of Saint Benilde</strong> is
+                      not responsible for the content, accuracy, or practices of
+                      these external sites. Any links provided do not imply
+                      endorsement or association with those websites.
+                    </li>{" "}
+                  </ul>
                 </p>
 
-                <h1 className="text-xl font-bold pb-10">Privacy:</h1>
+                <h1 className="text-xl font-bold">Privacy:</h1>
                 <p>
                   Your use of the Website is also governed by our Privacy
                   Policy, which outlines how we collect, use, and protect your
                   personal information. By using the Website, you consent to the
                   practices described in the Privacy Policy.
                 </p>
-                <h1 className="text-xl font-bold pb-10">Termination:</h1>
+                <h1 className="text-xl font-bold">Termination:</h1>
                 <p>
                   <strong>De La Salle-College of Saint Benilde</strong> reserves
                   the right to suspend or terminate access to the Website at any
@@ -112,7 +112,7 @@ export default function Terms() {
                   remove or modify any content on the Website for any reason
                   without liability.
                 </p>
-                <h1 className="text-xl font-bold pb-10">Governing Law:</h1>
+                <h1 className="text-xl font-bold">Governing Law:</h1>
                 <p>
                   These Terms are governed by and construed in accordance with
                   the laws of the Philippines, without regard to its conflicts
@@ -121,7 +121,7 @@ export default function Terms() {
                   the courts located in Philippines, and you hereby consent to
                   the personal jurisdiction of such courts.
                 </p>
-                <h1 className="text-xl font-bold pb-10">Changes to Terms:</h1>
+                <h1 className="text-xl font-bold">Changes to Terms:</h1>
                 <p>
                   Creators and admins of the site may update these Terms from
                   time to time. Any changes will be posted on this page with the
@@ -129,7 +129,7 @@ export default function Terms() {
                   after any changes to the Terms will constitute your acceptance
                   of those changes.
                 </p>
-                <h1 className="text-xl font-bold pb-10">Contact Us:</h1>
+                <h1 className="text-xl font-bold">Contact Us:</h1>
                 <p>
                   If you have any questions or concerns regarding these Terms,
                   please contact us at
@@ -137,9 +137,13 @@ export default function Terms() {
                 <p className="pt-10">
                   <strong>Beanca Torrefranca</strong>
                 </p>
-                <p>Creator</p>
-                <p>Behind The Screen</p>
-                <p>beanca.torrefranca@benilde.edu.ph</p>
+                <p>
+                  Creator
+                  <br />
+                  Behind The Screen Magazine
+                  <br />
+                  beanca.torrefranca@benilde.edu.ph
+                </p>
               </CardContent>
             </Card>
           </div>

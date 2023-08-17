@@ -4,17 +4,15 @@ import { Fragment, lazy } from "react";
 
 import Navigation from "../Component/Navigation";
 import Hero from "../Component/Hero";
-import EventHome from "../Component/EventHome";
 import LightTheme from "./theme";
 import { Box, Button, Grid, ThemeProvider } from "@mui/material";
 import { articles } from "@/data/data";
-import { useRouter } from "next/navigation";
 import ArticleCard from "../Component/ArticleCard";
 import ArticleCardMain from "../Component/ArticleCardMain";
 const Footer = lazy(() => import("../Component/Footer"));
 
 export default function Home() {
-  const router = useRouter();
+
   return (
     <ThemeProvider theme={LightTheme}>
       <Fragment>
@@ -23,7 +21,7 @@ export default function Home() {
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="max-w-screen-lg pt-10 pl-5 pr-5">
             <p>
-              At <strong>Behind The Screen</strong>, we invite you to embark on
+              At <strong>Behind The Screen Magazine</strong>, we invite you to embark on
               a journey that transcends the boundaries of traditional
               understanding. Our platform is dedicated to shedding light on a
               complex and often misunderstood issue: poverty porn.
@@ -72,8 +70,10 @@ export default function Home() {
                 <ArticleCardMain article={articles[9]} noContent={true} />
               </Grid>
             </Grid>
-            <br/>
-            <Button variant="outlined" sx={{ textTransform: "none" }}>Browse Articles</Button>
+            <br />
+            <Button variant="outlined" sx={{ textTransform: "none" }}>
+              Browse Articles
+            </Button>
             <div
               style={{
                 color: "#194175",
@@ -81,8 +81,7 @@ export default function Home() {
                 minHeight: 200,
                 paddingTop: 50,
               }}
-            >
-            </div>
+            ></div>
           </div>
         </Box>
         <Footer />

@@ -1,7 +1,7 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'Behind The Screen',
+  title: 'Behind The Screen Magazine',
   description: 'Welcome to our platform dedicated to raising awareness about global issues without resorting to exploitative tactics like poverty porn. We believe that compassion and understanding can be fostered without exploiting the hardships faced by marginalized communities.',
   icons: [
     {
