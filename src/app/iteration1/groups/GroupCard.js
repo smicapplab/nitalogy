@@ -29,7 +29,10 @@ export default function GroupCard({
   }, []);
 
   return (
-    <Card elevation={elevation} variant={ elevation === 0 ? "outlined" : "elevation" }>
+    <Card
+      elevation={elevation}
+      variant={elevation === 0 ? "outlined" : "elevation"}
+    >
       <CardMedia
         component="img"
         sx={{ height: 140 }}
@@ -50,11 +53,13 @@ export default function GroupCard({
         </div>
       </CardContent>
       <CardActions disableSpacing>
-        <ButtonGroup fullWidth
-          variant={elevation === 0 ? "outlined" : "elevation" }
+        <ButtonGroup
+          fullWidth
+          variant={elevation === 0 ? "outlined" : "elevation"}
           aria-label="outlined primary button group"
         >
           <Button
+            variant={elevation === 0 ? "outlined" : "elevation"}
             color="primary"
             sx={{ textTransform: "none" }}
             onClick={() => router.push(`/iteration1/group?title=${group.gsi2}`)}
@@ -65,6 +70,7 @@ export default function GroupCard({
             <>
               {localUser && localUser.email !== group.gsi1 && (
                 <Button
+                  variant={elevation === 0 ? "outlined" : "elevation"}
                   color="primary"
                   sx={{ textTransform: "none" }}
                   onClick={
@@ -77,6 +83,7 @@ export default function GroupCard({
             </>
           )}
           <Button
+            variant={elevation === 0 ? "outlined" : "elevation"}
             color="primary"
             sx={{ textTransform: "none" }}
             onClick={() => openInNewTab(group.url)}
