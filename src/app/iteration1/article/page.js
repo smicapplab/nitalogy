@@ -2,10 +2,13 @@
 
 import { Fragment, lazy, useEffect, useState } from "react";
 import {
+  Avatar,
   Box,
+  Button,
   Card,
   CardContent,
   CardMedia,
+  Divider,
   Grid,
   IconButton,
   ThemeProvider,
@@ -15,6 +18,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { articles } from "@/data/data";
 import LightTheme from "../theme";
+import InputText from "@/app/Component/InputText";
+import { stringAvatar } from "@/helper/avatarHelper";
+import axios from "axios";
 const Footer = lazy(() => import("../../Component/Footer"));
 const Navigation = lazy(() => import("../../Component/Navigation"));
 const ArticleCardMain = lazy(() => import("../../Component/ArticleCardMain"));
@@ -22,10 +28,26 @@ const ArticleCardMain = lazy(() => import("../../Component/ArticleCardMain"));
 export default function Article() {
   const [article, setArticle] = useState();
   const [relatedArticles, setRelatedArticles] = useState();
+  const [comment, setComment] = useState(null);
+  const [comments, setComments] = useState(null);
   const [liked, setLiked] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
   const index = searchParams.get("index");
+  const [localUser, setLocalUser] = useState(null);
+
+  const commentChanged = (e) => {
+    setComment(e.target.value);
+  };
+
+  const submitComment = async () => {
+    const { data } = await axios.post("/api/add-comment", {
+      comment,
+      article: article.id,
+    });
+
+    setComments(data.comments);
+  };
 
   const likeArticle = () => {
     if (liked) {
@@ -37,6 +59,9 @@ export default function Article() {
   };
 
   useEffect(() => {
+    const localUser = localStorage.getItem("localUser");
+    setLocalUser(JSON.parse(localUser));
+
     if (index) {
       if (articles[index]) {
         const _article = articles[index];
@@ -121,19 +146,76 @@ export default function Article() {
           </div>
         </Box>
         <Box display="flex" justifyContent="center" alignContent="center">
-          <div className="container max-w-screen-lg pt-20 ">
-            <h1>Comments</h1>
-            <p>No comments yet</p>
+          <div className="container max-w-screen-lg pt-10 ">
+            <Card variant="outlined" sx={{ padding: 5 }}>
+              <h1>Comments</h1>
+              {comments && comments.length > 0 ? (
+                <>
+                  <div className="w-full">
+                    <Grid container spacing={2}>
+                      {comments.map((comment) => (
+                        <Grid item md={1}>
+                          <Avatar {...stringAvatar(comment.author)}>
+                            {comment.author &&
+                              comment.author.substring(0, 1).toUpperCase()}
+                          </Avatar>
+                        </Grid>
+                      ))}
+                    </Grid>
+                  </div>
+                </>
+              ) : (
+                <p>No comments yet</p>
+              )}
+              <Divider />
+              <br />
+              <br />
+              <Grid container>
+                <Grid item xs={12} md={6}>
+                  {localUser ? (
+                    <>
+                      <InputText
+                        label="Add Comment"
+                        maxWidth="100%"
+                        placeholder="Write a comment"
+                        rows={3}
+                        onChange={commentChanged}
+                        value={comment}
+                      />
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        sx={{ textTransform: "none" }}
+                        onClick={submitComment}
+                      >
+                        Submit
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <p>Please login to comment</p>
+                      <Button
+                        variant="outlined"
+                        sx={{ textTransform: "none" }}
+                        onClick={() => router.push("/iteration1/login")}
+                      >
+                        Login
+                      </Button>
+                    </>
+                  )}
+                </Grid>
+              </Grid>
+            </Card>
           </div>
         </Box>
         {relatedArticles && (
           <Box display="flex" justifyContent="center" alignContent="center">
             <div className="container max-w-screen-lg pt-20 ">
-            <h1>Related Articles</h1>
+              <h1>Related Articles</h1>
               <Grid container spacing={2}>
                 {relatedArticles.map((a) => (
                   <Grid item xs={12} md={6} xl={4} key={a.id}>
-                    <ArticleCardMain article={a}/>
+                    <ArticleCardMain article={a} />
                   </Grid>
                 ))}
               </Grid>

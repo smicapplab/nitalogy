@@ -50,7 +50,7 @@ export default function GroupCard({
         </div>
       </CardContent>
       <CardActions disableSpacing>
-        <ButtonGroup
+        <ButtonGroup fullWidth
           variant={elevation === 0 ? "outlined" : "elevation" }
           aria-label="outlined primary button group"
         >
