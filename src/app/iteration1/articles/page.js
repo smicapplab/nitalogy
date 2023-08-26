@@ -1,32 +1,67 @@
 "use client";
 
 import { Fragment, useEffect, useState } from "react";
-import { Box, Button, ButtonGroup, Grid, ThemeProvider } from "@mui/material";
+import { Box, Grid, ThemeProvider } from "@mui/material";
 import Navigation from "../../Component/Navigation";
 import LightTheme from "../theme";
 import Footer from "../../Component/Footer";
 import { articles } from "@/data/data";
 import ArticleCardMain from "@/app/Component/ArticleCardMain";
 import { useSearchParams } from "next/navigation";
+import ArticleNavigation from "./components/ArticleNavigation";
+
+const pageTitle = [
+  "",
+  "<strong>Understanding Poverty Porn</strong> - What is Poverty Porn and what does it do?",
+  "<strong>Media Industry Spotlight</strong> -  Media abuse and use of media to promote influencer culture",
+  "<strong>Social Justice and Advocacy</strong> - Representations of the marginalized groups that affect them either positively or negatively due to those who either truly advocate for the cause or use this as a means to promote themselves.",
+  "<strong>Psychological Impacts</strong> - Psychological impact of the bombarding of media related poverty porn and its widespread effect of compassion fatigue",
+  "<strong>Critical Perspectives</strong> - Opinion pieces on poverty porn regarding recent events and other portrayals that exploit the marginalized groups for clicks and views",
+];
+
+let sections = [];
+let options = [
+  {
+    sectionId: "All",
+    section: "All",
+    url: `/iteration1/articles`,
+  },
+];
+
+articles.forEach((article) => {
+  if (!sections.includes(article.sectionId)) {
+    options.push({
+      sectionId: article.sectionId,
+      section: article.section,
+      url: `/iteration1/articles?section=${article.sectionId}`,
+    });
+    sections.push(article.sectionId);
+  }
+});
 
 export default function Articles() {
   const searchParams = useSearchParams();
   const section = searchParams.get("section");
   const [articlesToDisplay, setArticlesToDisplay] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   useEffect(() => {
-    /** 
-      section: "Understanding Poverty Porn"
-      sectionId: "understanding-poverty-porn"
-    */
-
     if (section) {
       const sectionArticles = articles.filter(
         (article) => article.sectionId === section
       );
       setArticlesToDisplay(sectionArticles);
+      let index = 0;
+      for (let option of options) {
+        if (option.sectionId === sectionArticles[0].sectionId) {
+          setSelectedIndex(index);
+          break;
+        }
+        index++;
+      }
     } else {
       setArticlesToDisplay(articles);
+      setSelectedIndex(0);
     }
   }, [section]);
 
@@ -36,17 +71,16 @@ export default function Articles() {
         <Navigation />
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="container max-w-screen-lg pt-36 ">
-            <div>
-              <ButtonGroup
-                disableElevation
-                variant="contained"
-                aria-label="Disabled elevation buttons"
-              >
-                <Button variant="contained" color="primary">One</Button>
-                <Button color="secondary">Two</Button>
-              </ButtonGroup>
+            <div className="flex justify-end pb-10">
+              <ArticleNavigation
+                options={options}
+                selectedIndex={selectedIndex}
+              />
             </div>
-            <h1>Articles</h1>
+            <div
+              dangerouslySetInnerHTML={{ __html: pageTitle[selectedIndex] }}
+              className="pb-5"
+            />
             <Grid container spacing={2}>
               {articlesToDisplay.map((article) => (
                 <Grid item xs={12} md={6} xl={4} key={article.id}>

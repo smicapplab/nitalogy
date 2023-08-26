@@ -8,6 +8,7 @@ export default function InputText({
   placeholder,
   disabled = false,
   rows = 1,
+  maxWidth = "400px"
 }) {
   return (
     <Box
@@ -20,7 +21,7 @@ export default function InputText({
     >
       <FormControl
         fullWidth
-        sx={{ paddingRight: "16px", marginBottom: "20px", borderRadius: 0,  maxWidth: "400px",  }}
+        sx={{ paddingRight: "16px", marginBottom: "20px", borderRadius: 0,  maxWidth,  }}
       >
         <TextField
           disabled={disabled}

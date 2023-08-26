@@ -392,36 +392,3 @@ export const films = [
     trailer: "https://www.youtube.com/watch?v=5PXscl_d7UQ",
   },
 ];
-
-
-export const groups = [
-  {
-    name: "Youth Organization of the Philippines",
-    description: "This group is created for Social Learning for Organization organized by Samahan ng Kabataang Boluntaryo ng Pilipinas",
-    image: "https://scontent.fmnl11-1.fna.fbcdn.net/v/t1.6435-9/80645952_1186491348216529_7157123374521516032_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=8631f5&_nc_eui2=AeEJGOdxF3lawoh2UUi0H14YRayzqIE1UApFrLOogTVQCnKEv0C2wbA0DsdvqAR8AdI&_nc_ohc=HNRl77iZQioAX_pLAoT&_nc_ht=scontent.fmnl11-1.fna&oh=00_AfCHhjuA5LZe01VsqJSbX57oWKJLpee0rLeP9MPbLXCxcw&oe=6505BCBA",
-    link: "https://www.facebook.com/groups/YouthOrgPH/",
-  },
-  {
-    name: "Social Media for Development & Non-Profit Organizations Philippines",
-    description: `<p>Do you work or volunteer for an NGO, government agency, social enterprise, humanitarian organizations, foundations, corporate-social responsibility (CSR) agencies or any group who works toward a good cause?</p>
-    <p>Does your organization lack the capacity to manage its social media presence? But you are eager to maximize its wonders to your advocacies' advantage?</p>
-    <p>Then join this 𝗦𝗢𝗖𝗜𝗔𝗟 𝗠𝗘𝗗𝗜𝗔 𝗙𝗢𝗥 𝗗𝗘𝗩𝗘𝗟𝗢𝗣𝗠𝗘𝗡𝗧 & 𝗡𝗢𝗡-𝗣𝗥𝗢𝗙𝗜𝗧 𝗢𝗥𝗚𝗔𝗡𝗜𝗭𝗔𝗧𝗜𝗢𝗡𝗦 𝗣𝗛𝗜𝗟𝗜𝗣𝗣𝗜𝗡𝗘𝗦 Facebook Group.</p>
-    <p>This is a safe space for us people who are passionate about our advocacies and wants to use the power of social media to uplift our society.</p>`,
-    image: "https://scontent.fmnl11-1.fna.fbcdn.net/v/t39.30808-6/361252598_10160872188108256_5322579901415812427_n.png?stp=dst-jpg_s960x960&_nc_cat=104&ccb=1-7&_nc_sid=8631f5&_nc_eui2=AeEtzppQaeDQOjFmfUSVJC6FpAjKKZhVPLOkCMopmFU8szmFyMfhX_rJO6e-cGgzVWc&_nc_ohc=ajMspDuJLn8AX9WBbyw&_nc_oc=AQmUIMaBY_M1HSSXNpPOlFTPDv-OWu819jnOs0PlUE4PUNiyk8ag3fHgdz-02k_CEwg&_nc_ht=scontent.fmnl11-1.fna&oh=00_AfC43PL2GbS9cH7_a-mjpb6cZZzv9hpry8t4T8OGVT51Pg&oe=64E34286",
-    link: "https://www.facebook.com/groups/231005049806817/",
-  },
-  {
-    name: "Nonprofit Connection",
-    description: `<p>A place for nonprofits to connect to their constituents, donors, board members, volunteers, other nonprofits and the world at large.</p>
-    <p>This is a great place to share information, best practices, needs and causes.</p>
-    <p>Start connecting, and let's change the world!</p>`,
-    image: "https://scontent.fmnl11-1.fna.fbcdn.net/v/t1.18169-9/11745620_929722587085920_4117450720174692148_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8631f5&_nc_eui2=AeFaSHXeFb9bgXIrxWA8IEiCG62-UWQ8__Abrb5RZDz_8GfVYLVq_HECtk7IV7HIGp4&_nc_ohc=oVUakNPNCtgAX88DtiU&_nc_ht=scontent.fmnl11-1.fna&oh=00_AfDbeCeL2Dk24AEgOu2c8-IgkCtuQW3CATxTHr-0C58zUA&oe=65059E81",
-    link: "https://www.facebook.com/groups/volunteeropportunitiesphilippines/",
-  },
-  {
-    name: "Poverty Alleviation Group",
-    description: "Helping poor communities by providing such communities with good drinking water projects, public toilets and school materials to the brilliant but needy students.",
-    image: "https://scontent.fmnl11-1.fna.fbcdn.net/v/t1.18169-9/19959179_1738381666212475_3972298533941589316_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=8631f5&_nc_eui2=AeFbUvMd7qQmYKPTjclmmtCCJNEzbSBOXN0k0TNtIE5c3VNiY7abgxgTN68SdIx7em8&_nc_ohc=OReKA3IjXLoAX9DPPif&_nc_ht=scontent.fmnl11-1.fna&oh=00_AfDyiXwDEY2C7mpsY7DF4Wso0ywaSLojFcKla1J3w7DMbA&oe=65059C61",
-    link: "https://www.facebook.com/groups/nonprofitmarketinghelp/",
-  },
-]

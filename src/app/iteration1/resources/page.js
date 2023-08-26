@@ -27,6 +27,8 @@ export default function Resources() {
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="container max-w-screen-lg pt-36 ">
             <h1>Documentaries and Films</h1>
+            <p>Some documentaries and films that, according to the public, have been criticized for being Poverty Porn due to some scenes. These include the sensationalization of poverty, its struggles, and sometimes romanticizing some scenes. </p>
+
             <Grid container spacing={2}>
               {films.map((film) => (
                 <Grid item xs={12} md={6} key={film.title}>

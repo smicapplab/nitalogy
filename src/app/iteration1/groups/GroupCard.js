@@ -1,34 +1,89 @@
+"use client";
+
 import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-import { Button } from "@mui/material";
+import { Button, ButtonGroup } from "@mui/material";
+import { format } from "date-fns";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
-export default function GroupCard({ group }) {
+export default function GroupCard({
+  group,
+  doJoin = () => {},
+  doLeave = () => {},
+  isMyGroup = false,
+  showJoin = true,
+  elevation = 1,
+}) {
+  const [localUser, setLocalUser] = useState(null);
+  const router = useRouter();
   const openInNewTab = (url) => {
     window.open(url, "_blank", "noreferrer");
   };
 
+  useEffect(() => {
+    const localUser = localStorage.getItem("localUser");
+    setLocalUser(JSON.parse(localUser));
+  }, []);
+
   return (
-    <Card>
-      <CardHeader title={group.name} />
+    <Card elevation={elevation} variant={ elevation === 0 ? "outlined" : "elevation" }>
       <CardMedia
         component="img"
-        height="194"
+        sx={{ height: 140 }}
         image={group.image}
         alt={group.name}
       />
       <CardContent>
-        <div dangerouslySetInnerHTML={{ __html: group.description }} />
+        <div className="truncate w-full pb-5">{group.name}</div>
+        <div className="text-sm">
+          <p>
+            <strong>Members: </strong>
+            {group.members.length}
+          </p>
+          <p>
+            <strong>Date Created: </strong>
+            {format(new Date(group.sk), "MMM dd, yyyy")}
+          </p>
+        </div>
       </CardContent>
       <CardActions disableSpacing>
-        <Button variant="contained" color="primary"
-          sx={{ textTransform: "none" }}
-          onClick={() => openInNewTab(group.link)}
+        <ButtonGroup
+          variant={elevation === 0 ? "outlined" : "elevation" }
+          aria-label="outlined primary button group"
         >
-          Join
-        </Button>
+          <Button
+            color="primary"
+            sx={{ textTransform: "none" }}
+            onClick={() => router.push(`/iteration1/group?title=${group.gsi2}`)}
+          >
+            View More
+          </Button>
+          {showJoin && (
+            <>
+              {localUser && localUser.email !== group.gsi1 && (
+                <Button
+                  color="primary"
+                  sx={{ textTransform: "none" }}
+                  onClick={
+                    isMyGroup ? () => doLeave(group) : () => doJoin(group)
+                  }
+                >
+                  {isMyGroup ? "Leave" : "Join"}
+                </Button>
+              )}
+            </>
+          )}
+          <Button
+            color="primary"
+            sx={{ textTransform: "none" }}
+            onClick={() => openInNewTab(group.url)}
+          >
+            View Website
+          </Button>
+        </ButtonGroup>
       </CardActions>
     </Card>
   );

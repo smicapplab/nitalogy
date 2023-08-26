@@ -26,9 +26,8 @@ export default function Login() {
   });
 
   const loginFb = async () => {
-    const response = await logIn();
+    await logIn();
     const profile = await getProfile();
-    console.log("profile", profile);
     const { data } = await axios.post("/api/auth/callback/facebook", {
       name: profile.name,
       email: profile.email,
@@ -75,7 +74,7 @@ export default function Login() {
               >
                 <p className="text-lg font-bold pb-10">Login</p>
                 <Button
-                  sx={{ backgroundColor: "#DB4437", color: "white" }}
+                  sx={{ backgroundColor: "#DB4437 !important", color: "white !important" }}
                   fullWidth
                   variant="outlined"
                   startIcon={<GoogleIcon />}
@@ -85,7 +84,7 @@ export default function Login() {
                 </Button>
                 <Divider sx={{ paddingTop: 5 }} />
                 <Button
-                  sx={{ backgroundColor: "#4267B2", color: "white" }}
+                  sx={{ backgroundColor: "#4267B2 !important", color: "white !important" }}
                   fullWidth
                   variant="outlined"
                   startIcon={<FacebookIcon />}

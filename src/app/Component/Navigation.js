@@ -18,13 +18,11 @@ import {
   Collapse,
   List,
   ListItemButton,
-  ListItemIcon,
   ListItemText,
-  ListSubheader,
-  MenuList,
   Paper,
 } from "@mui/material";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import axios from "axios";
 
 export const pages = [
   { label: "Home", url: "../iteration1" },
@@ -60,14 +58,12 @@ export const pages = [
   { label: "Contact Us", url: "/iteration1/contact-us" },
 ];
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
 export default function Navigation() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [openNav, setOpenNav] = useState(true);
-
+  const router = useRouter();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -88,8 +84,6 @@ export default function Navigation() {
     router.push(subPage.url);
   };
 
-  const router = useRouter();
-
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -108,6 +102,15 @@ export default function Navigation() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleCloseUserMenuAndRedirect = async () => {
+    setAnchorElUser(null);
+    const { data } = await axios.post("/api/auth/do-logout", {});
+    if (data.success) {
+      localStorage.removeItem("localUser");
+      router.push("/iteration1/login");
+    }
   };
 
   useEffect(() => {
@@ -294,11 +297,12 @@ export default function Navigation() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))}
+                <MenuItem onClick={() => router.push("/iteration1/profile")}>
+                  <Typography textAlign="center">Profile</Typography>
+                </MenuItem>
+                <MenuItem onClick={() => handleCloseUserMenuAndRedirect()}>
+                  <Typography textAlign="center">Logout</Typography>
+                </MenuItem>
               </Menu>
             </Box>
           ) : (
