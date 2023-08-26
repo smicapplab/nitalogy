@@ -16,6 +16,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { useRouter } from "next/navigation";
 import {
   Collapse,
+  Divider,
   List,
   ListItemButton,
   ListItemText,
@@ -62,7 +63,7 @@ export default function Navigation() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [loggedInUser, setLoggedInUser] = useState(null);
-  const [openNav, setOpenNav] = useState(true);
+  const [openNav, setOpenNav] = useState(false);
   const router = useRouter();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -179,12 +180,22 @@ export default function Navigation() {
                   component="nav"
                   aria-labelledby="nested-list-subheader"
                 >
+                  {!loggedInUser && (
+                    <>
+                      <ListItemButton
+                        onClick={() => router.push("/iteration1/login")}
+                      >
+                        <ListItemText primary="Login" />
+                      </ListItemButton>
+                      <Divider />
+                    </>
+                  )}
                   {pages.map((page) => (
                     <Fragment key={page.label}>
                       {page.sub && page.sub.length > 0 ? (
                         <>
                           <ListItemButton onClick={() => handleNavClick()}>
-                            <ListItemText primary="Inbox" />
+                            <ListItemText primary={page.label} />
                             {openNav ? <ExpandLess /> : <ExpandMore />}
                           </ListItemButton>
                           <Collapse in={openNav} timeout="auto" unmountOnExit>

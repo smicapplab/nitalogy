@@ -3,7 +3,7 @@
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, lazy } from "react";
 import {
   Box,
   Button,
@@ -12,12 +12,12 @@ import {
   Divider,
   ThemeProvider,
 } from "@mui/material";
-import Navigation from "../../Component/Navigation";
 import LightTheme from "../theme";
-import Footer from "../../Component/Footer";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import { useFacebookLogin } from "react-facebook-login-hook";
+const Navigation = lazy(() => import("../../Component/Navigation"));
+const Footer = lazy(() => import("../../Component/Footer"));
 
 export default function Login() {
   const router = useRouter();

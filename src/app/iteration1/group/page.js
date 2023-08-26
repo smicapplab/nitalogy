@@ -1,6 +1,7 @@
 "use client";
 
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, lazy, useEffect, useState } from "react";
+import axios from "axios";
 import {
   Box,
   Button,
@@ -10,12 +11,11 @@ import {
   Divider,
   ThemeProvider,
 } from "@mui/material";
-import Navigation from "../../Component/Navigation";
 import LightTheme from "../theme";
-import Footer from "../../Component/Footer";
 import { useSearchParams } from "next/navigation";
-import axios from "axios";
 import { format } from "date-fns";
+const Footer = lazy(() => import("../../Component/Footer"));
+const Navigation = lazy(() => import("../../Component/Navigation"));
 
 export default function Group() {
   const searchParams = useSearchParams();

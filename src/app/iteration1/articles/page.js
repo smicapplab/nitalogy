@@ -1,14 +1,15 @@
 "use client";
 
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, lazy, useEffect, useState } from "react";
 import { Box, Grid, ThemeProvider } from "@mui/material";
-import Navigation from "../../Component/Navigation";
 import LightTheme from "../theme";
-import Footer from "../../Component/Footer";
 import { articles } from "@/data/data";
 import ArticleCardMain from "@/app/Component/ArticleCardMain";
 import { useSearchParams } from "next/navigation";
-import ArticleNavigation from "./components/ArticleNavigation";
+const Footer = lazy(() => import("../../Component/Footer"));
+const Navigation = lazy(() => import("../../Component/Navigation"));
+const ArticleNavigation= lazy(() => import("./components/ArticleNavigation"));
+
 
 const pageTitle = [
   "",

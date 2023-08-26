@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, lazy, useEffect, useRef, useState } from "react";
 import {
   Box,
   Button,
@@ -11,13 +11,13 @@ import {
   FormControl,
   ThemeProvider,
 } from "@mui/material";
-import Navigation from "../../Component/Navigation";
 import LightTheme from "../theme";
-import Footer from "../../Component/Footer";
 import InputText from "@/app/Component/InputText";
 import { toBase64 } from "@/helper/Image";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+const Footer = lazy(() => import("../../Component/Footer"));
+const Navigation = lazy(() => import("../../Component/Navigation"));
 
 export default function NewGroup() {
   const [newGroup, setNewGroup] = useState({});

@@ -1,10 +1,10 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, lazy } from "react";
 import { Box, Card, CardContent, ThemeProvider } from "@mui/material";
-import Navigation from "../../Component/Navigation";
 import LightTheme from "../theme";
-import Footer from "../../Component/Footer";
+const Footer = lazy(() => import("../../Component/Footer"));
+const Navigation = lazy(() => import("../../Component/Navigation"));
 
 export default function Terms() {
   return (
@@ -50,51 +50,47 @@ export default function Terms() {
                 </p>
 
                 <h1 className="text-xl font-bold">Use of Website:</h1>
-                <p>
-                  <ul>
-                    <li>
-                      <strong>1. Content Ownership:</strong> All content on the
-                      Website, including text, images, graphics, videos, and
-                      other materials, is the property of{" "}
-                      <strong>De La Salle-College of Saint Benilde</strong> or
-                      its respective content creators. You may not modify,
-                      reproduce, distribute, or republish any content without
-                      prior written consent.
-                    </li>
-                    <li>
-                      <strong>2. User Content:</strong> You may have the
-                      opportunity to submit or post content on the Website as
-                      part of your school project. By submitting content, you
-                      grant [Your School Name] a non-exclusive, royalty-free,
-                      worldwide license to use, modify, reproduce, and display
-                      the content for educational and promotional purposes
-                      related to the school project.
-                    </li>
-                  </ul>
-                </p>
+                <ul>
+                  <li>
+                    <strong>1. Content Ownership:</strong> All content on the
+                    Website, including text, images, graphics, videos, and other
+                    materials, is the property of{" "}
+                    <strong>De La Salle-College of Saint Benilde</strong> or its
+                    respective content creators. You may not modify, reproduce,
+                    distribute, or republish any content without prior written
+                    consent.
+                  </li>
+                  <li>
+                    <strong>2. User Content:</strong> You may have the
+                    opportunity to submit or post content on the Website as part
+                    of your school project. By submitting content, you grant
+                    [Your School Name] a non-exclusive, royalty-free, worldwide
+                    license to use, modify, reproduce, and display the content
+                    for educational and promotional purposes related to the
+                    school project.
+                  </li>
+                </ul>
 
                 <h1 className="text-xl font-bold">Disclaimer of Liability:</h1>
-                <p>
-                  <ul>
-                    <li>
-                      <strong>1. Accuracy of Information: </strong> The
-                      information provided on the Website is for educational and
-                      informational purposes only.{" "}
-                      <strong>De La Salle-College of Saint Benilde</strong>{" "}
-                      makes no warranties or representations regarding the
-                      accuracy, completeness, or reliability of the content. You
-                      use the content at your own risk.
-                    </li>
-                    <li>
-                      <strong>2. Third-Party Links:</strong> The Website may
-                      contain links to third-party websites.{" "}
-                      <strong>De La Salle-College of Saint Benilde</strong> is
-                      not responsible for the content, accuracy, or practices of
-                      these external sites. Any links provided do not imply
-                      endorsement or association with those websites.
-                    </li>{" "}
-                  </ul>
-                </p>
+                <ul>
+                  <li>
+                    <strong>1. Accuracy of Information: </strong> The
+                    information provided on the Website is for educational and
+                    informational purposes only.{" "}
+                    <strong>De La Salle-College of Saint Benilde</strong> makes
+                    no warranties or representations regarding the accuracy,
+                    completeness, or reliability of the content. You use the
+                    content at your own risk.
+                  </li>
+                  <li>
+                    <strong>2. Third-Party Links:</strong> The Website may
+                    contain links to third-party websites.{" "}
+                    <strong>De La Salle-College of Saint Benilde</strong> is not
+                    responsible for the content, accuracy, or practices of these
+                    external sites. Any links provided do not imply endorsement
+                    or association with those websites.
+                  </li>{" "}
+                </ul>
 
                 <h1 className="text-xl font-bold">Privacy:</h1>
                 <p>

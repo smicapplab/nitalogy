@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useRef } from "react";
+import { Fragment, lazy, useEffect, useRef } from "react";
 import {
   Box,
   Card,
@@ -9,11 +9,11 @@ import {
   Grid,
   ThemeProvider,
 } from "@mui/material";
-import Navigation from "../../Component/Navigation";
 import LightTheme from "../theme";
-import Footer from "../../Component/Footer";
-import FilmsCard from "./FilmsCard";
 import { films } from "@/data/data";
+const Footer = lazy(() => import("../../Component/Footer"));
+const Navigation = lazy(() => import("../../Component/Navigation"));
+const FilmsCard = lazy(() => import("./FilmsCard"));
 
 export default function Resources() {
   const ref = useRef(null);

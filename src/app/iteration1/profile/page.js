@@ -1,23 +1,19 @@
 "use client";
 
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, lazy, useEffect, useState } from "react";
 import {
   Box,
-  Button,
   Card,
   CardContent,
-  CardMedia,
   Divider,
   Grid,
   ThemeProvider,
 } from "@mui/material";
-import Navigation from "../../Component/Navigation";
 import LightTheme from "../theme";
-import Footer from "../../Component/Footer";
-import { useSearchParams } from "next/navigation";
 import axios from "axios";
-import { format } from "date-fns";
 import GroupCard from "../groups/GroupCard";
+const Footer = lazy(() => import("../../Component/Footer"));
+const Navigation = lazy(() => import("../../Component/Navigation"));
 
 export default function Group() {
   const [localUser, setLocalUser] = useState(null);

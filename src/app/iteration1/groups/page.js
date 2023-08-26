@@ -1,14 +1,14 @@
 "use client";
 
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, lazy, useEffect, useState } from "react";
 import { Box, Button, Grid, Tab, Tabs, ThemeProvider } from "@mui/material";
-import Navigation from "../../Component/Navigation";
 import LightTheme from "../theme";
-import Footer from "../../Component/Footer";
-import GroupCard from "./GroupCard";
 import Diversity1Icon from "@mui/icons-material/Diversity1";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+const Footer = lazy(() => import("../../Component/Footer"));
+const Navigation = lazy(() => import("../../Component/Navigation"));
+const GroupCard = lazy(() => import("./GroupCard"));
 
 const CustomTabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -51,13 +51,12 @@ export default function Groups() {
   };
 
   const createNewGroup = () => {
-    if( localUser ){
-      router.push("/iteration1/new-group")
-    }else{
-      router.push("/iteration1/login")
+    if (localUser) {
+      router.push("/iteration1/new-group");
+    } else {
+      router.push("/iteration1/login");
     }
-  }
-  
+  };
 
   useEffect(() => {
     const localUser = localStorage.getItem("localUser");
@@ -84,7 +83,7 @@ export default function Groups() {
                 color="primary"
                 startIcon={<Diversity1Icon />}
                 sx={{ textTransform: "none" }}
-                onClick={ ()=> createNewGroup() }
+                onClick={() => createNewGroup()}
               >
                 New Group
               </Button>
@@ -109,7 +108,12 @@ export default function Groups() {
               <Grid container spacing={2}>
                 {myGroups.map((group) => (
                   <Grid item md={6} key={group.name}>
-                    <GroupCard group={group} doJoin={doJoin} doLeave={doLeave} isMyGroup={true}/>
+                    <GroupCard
+                      group={group}
+                      doJoin={doJoin}
+                      doLeave={doLeave}
+                      isMyGroup={true}
+                    />
                   </Grid>
                 ))}
               </Grid>
@@ -118,7 +122,12 @@ export default function Groups() {
               <Grid container spacing={2}>
                 {discover.map((group) => (
                   <Grid item md={6} key={group.name}>
-                    <GroupCard group={group} doJoin={doJoin} doLeave={doLeave} isMyGroup={false}/>
+                    <GroupCard
+                      group={group}
+                      doJoin={doJoin}
+                      doLeave={doLeave}
+                      isMyGroup={false}
+                    />
                   </Grid>
                 ))}
               </Grid>

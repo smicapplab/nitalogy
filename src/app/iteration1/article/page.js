@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, lazy, useEffect, useState } from "react";
 import {
   Box,
   Card,
@@ -11,13 +11,13 @@ import {
   ThemeProvider,
 } from "@mui/material";
 import { ShareSocial } from "react-share-social";
-import Navigation from "../../Component/Navigation";
-import LightTheme from "../theme";
-import Footer from "../../Component/Footer";
-import { articles } from "@/data/data";
 import { useRouter, useSearchParams } from "next/navigation";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import ArticleCardMain from "@/app/Component/ArticleCardMain";
+import { articles } from "@/data/data";
+import LightTheme from "../theme";
+const Footer = lazy(() => import("../../Component/Footer"));
+const Navigation = lazy(() => import("../../Component/Navigation"));
+const ArticleCardMain = lazy(() => import("../../Component/ArticleCardMain"));
 
 export default function Article() {
   const [article, setArticle] = useState();

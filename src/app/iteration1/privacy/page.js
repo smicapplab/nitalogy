@@ -1,10 +1,10 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, lazy } from "react";
 import { Box, Card, CardContent, ThemeProvider } from "@mui/material";
-import Navigation from "../../Component/Navigation";
 import LightTheme from "../theme";
-import Footer from "../../Component/Footer";
+const Footer = lazy(() => import("../../Component/Footer"));
+const Navigation = lazy(() => import("../../Component/Navigation"));
 
 export default function Privacy() {
   return (
@@ -30,47 +30,45 @@ export default function Privacy() {
                 <p>
                   We may collect the following types of information when you use
                   our web app:
-                  <ul>
-                    <li>
-                      <strong>1. Personal Information:</strong> We may collect
-                      personally identifiable information, such as your name,
-                      email address, and other contact details, which you
-                      voluntarily provide when registering or using certain
-                      features of the web app.
-                    </li>
-                    <li>
-                      <strong>2. Usage Information:</strong> We may collect
-                      non-personal information about how you use the web app,
-                      including your interactions, preferences, and activities.
-                      This information helps us enhance the user experience and
-                      improve our services.
-                    </li>
-                  </ul>
                 </p>
+                <ul>
+                  <li>
+                    <strong>1. Personal Information:</strong> We may collect
+                    personally identifiable information, such as your name,
+                    email address, and other contact details, which you
+                    voluntarily provide when registering or using certain
+                    features of the web app.
+                  </li>
+                  <li>
+                    <strong>2. Usage Information:</strong> We may collect
+                    non-personal information about how you use the web app,
+                    including your interactions, preferences, and activities.
+                    This information helps us enhance the user experience and
+                    improve our services.
+                  </li>
+                </ul>
                 <h1 className="text-lg font-bold ">
                   How We Use Your Information:
                 </h1>
-                <p>
-                  <ul>
-                    <li>
-                      <strong>1. Provide and Improve Services:</strong> We use
-                      the information you provide to deliver the services you
-                      requested, improve our web app's functionality, and
-                      develop new features.
-                    </li>
-                    <li>
-                      <strong>2. Communication:</strong> We may use your email
-                      address to send you important updates, notifications, and
-                      newsletters related to the web app. You can opt-out of
-                      these communications at any time.
-                    </li>
-                    <li>
-                      <strong>3. Analyze Usage:</strong> We may analyze user
-                      behavior and engagement to understand how our web app is
-                      used and make informed decisions for enhancements.
-                    </li>
-                  </ul>
-                </p>
+                <ul>
+                  <li>
+                    <strong>1. Provide and Improve Services:</strong> We use the
+                    information you provide to deliver the services you
+                    requested, improve our web app's functionality, and develop
+                    new features.
+                  </li>
+                  <li>
+                    <strong>2. Communication:</strong> We may use your email
+                    address to send you important updates, notifications, and
+                    newsletters related to the web app. You can opt-out of these
+                    communications at any time.
+                  </li>
+                  <li>
+                    <strong>3. Analyze Usage:</strong> We may analyze user
+                    behavior and engagement to understand how our web app is
+                    used and make informed decisions for enhancements.
+                  </li>
+                </ul>
                 <h1 className="text-lg font-bold ">
                   Sharing Your Information:
                 </h1>
@@ -79,23 +77,20 @@ export default function Privacy() {
                   third parties. However, we may share your information in the
                   following circumstances:{" "}
                 </p>
-                <p>
-                  <ul>
-                    <li>
-                      <strong>1. Service Providers:</strong> We may engage
-                      third-party service providers who assist us in operating
-                      the web app and provide services on our behalf. These
-                      providers are bound by confidentiality agreements and are
-                      only authorized to use your information for specified
-                      purposes.
-                    </li>
-                    <li>
-                      <strong>2. Legal Compliance:</strong> We may disclose your
-                      information if required by law, government request, or to
-                      protect our legal rights.
-                    </li>
-                  </ul>
-                </p>
+                <ul>
+                  <li>
+                    <strong>1. Service Providers:</strong> We may engage
+                    third-party service providers who assist us in operating the
+                    web app and provide services on our behalf. These providers
+                    are bound by confidentiality agreements and are only
+                    authorized to use your information for specified purposes.
+                  </li>
+                  <li>
+                    <strong>2. Legal Compliance:</strong> We may disclose your
+                    information if required by law, government request, or to
+                    protect our legal rights.
+                  </li>
+                </ul>
                 <h1 className="text-lg font-bold ">Data Security:</h1>
                 <p>
                   We have implemented technical and organizational measures to
@@ -105,22 +100,20 @@ export default function Privacy() {
                   the absolute security of your information.
                 </p>
                 <h1 className="text-lg font-bold ">Your Choices:</h1>
-                <p>
-                  <ul>
-                    <li>
-                      <strong>1. Access and Update:</strong> You can access,
-                      update, or delete your personal information by logging
-                      into your account or contacting us. We will respond to
-                      your request within a reasonable time.
-                    </li>
+                <ul>
+                  <li>
+                    <strong>1. Access and Update:</strong> You can access,
+                    update, or delete your personal information by logging into
+                    your account or contacting us. We will respond to your
+                    request within a reasonable time.
+                  </li>
 
-                    <li>
-                      <strong>2. Opt-Out:</strong> You can opt-out of receiving
-                      marketing communications by following the instructions in
-                      the communication or by contacting us directly.
-                    </li>
-                  </ul>
-                </p>
+                  <li>
+                    <strong>2. Opt-Out:</strong> You can opt-out of receiving
+                    marketing communications by following the instructions in
+                    the communication or by contacting us directly.
+                  </li>
+                </ul>
                 <h1 className="text-lg font-bold ">Your Choices:</h1>
                 <p>
                   Children's Privacy: Our web app is not intended for

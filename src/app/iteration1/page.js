@@ -1,18 +1,16 @@
 "use client";
 
 import { Fragment, lazy } from "react";
-
-import Navigation from "../Component/Navigation";
-import Hero from "../Component/Hero";
-import LightTheme from "./theme";
 import { Box, Button, Grid, ThemeProvider } from "@mui/material";
+import LightTheme from "./theme";
 import { articles } from "@/data/data";
-import ArticleCard from "../Component/ArticleCard";
-import ArticleCardMain from "../Component/ArticleCardMain";
+const ArticleCard = lazy(() => import("../Component/ArticleCard"));
+const ArticleCardMain = lazy(() => import("../Component/ArticleCardMain"));
+const Navigation = lazy(() => import("../Component/Navigation"));
+const Hero = lazy(() => import("../Component/Hero"));
 const Footer = lazy(() => import("../Component/Footer"));
 
 export default function Home() {
-
   return (
     <ThemeProvider theme={LightTheme}>
       <Fragment>
@@ -21,8 +19,8 @@ export default function Home() {
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="max-w-screen-lg pt-10 pl-5 pr-5">
             <p>
-              At <strong>Behind The Screen Magazine</strong>, we invite you to embark on
-              a journey that transcends the boundaries of traditional
+              At <strong>Behind The Screen Magazine</strong>, we invite you to
+              embark on a journey that transcends the boundaries of traditional
               understanding. Our platform is dedicated to shedding light on a
               complex and often misunderstood issue: poverty porn.
             </p>

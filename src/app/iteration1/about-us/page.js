@@ -1,10 +1,10 @@
 "use client";
 
-import { Fragment, useEffect } from "react";
+import { Fragment, lazy, useEffect } from "react";
 import { Box, Grid, ThemeProvider } from "@mui/material";
-import Navigation from "../../Component/Navigation";
 import LightTheme from "../theme";
-import Footer from "../../Component/Footer";
+const Footer = lazy(() => import("../../Component/Footer"));
+const Navigation = lazy(() => import("../../Component/Navigation"));
 
 export default function AboutUs() {
   useEffect(() => {}, []);

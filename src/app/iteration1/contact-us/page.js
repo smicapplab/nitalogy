@@ -1,11 +1,11 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, lazy, useState } from "react";
 import { Alert, AlertTitle, Box, Button, ThemeProvider } from "@mui/material";
-import Navigation from "../../Component/Navigation";
 import LightTheme from "../theme";
-import Footer from "../../Component/Footer";
 import InputText from "@/app/Component/InputText";
+const Footer = lazy(() => import("../../Component/Footer"));
+const Navigation = lazy(() => import("../../Component/Navigation"));
 
 export default function ContactUs() {
   const [contact, setContact] = useState({});
