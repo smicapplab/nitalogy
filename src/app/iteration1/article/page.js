@@ -21,6 +21,7 @@ import LightTheme from "../theme";
 import InputText from "@/app/Component/InputText";
 import { stringAvatar } from "@/helper/avatarHelper";
 import axios from "axios";
+import { format } from "date-fns";
 const Footer = lazy(() => import("../../Component/Footer"));
 const Navigation = lazy(() => import("../../Component/Navigation"));
 const ArticleCardMain = lazy(() => import("../../Component/ArticleCardMain"));
@@ -41,11 +42,12 @@ export default function Article() {
   };
 
   const submitComment = async () => {
+    const _comment = comment
+    setComment(null);
     const { data } = await axios.post("/api/add-comment", {
-      comment,
+      comment:_comment,
       article: article.id,
     });
-
     setComments(data.comments);
   };
 
@@ -171,6 +173,8 @@ export default function Article() {
                               comment.author.substring(0, 1).toUpperCase()}
                           </Avatar>
                           <div className="ml-2 p-2 bg-slate-200 rounded-3xl text-sm">
+                            <strong>{comment.author}</strong> ( { format( new Date(comment.sk), "MMM dd, yyyy" ) } )
+                            <Divider />
                             {comment.comment}
                           </div>
                         </div>
@@ -194,7 +198,7 @@ export default function Article() {
                         placeholder="Write a comment"
                         rows={3}
                         onChange={commentChanged}
-                        value={comment}
+                        value={comment || ""}
                       />
                       <Button
                         variant="contained"

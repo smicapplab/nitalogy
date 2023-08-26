@@ -7,12 +7,13 @@ export async function POST(request) {
     const user = decodeToken(request) || {};
     let { comment, article } = await request.json();
 
-    const sk = `id-${article}`
+    const pk = `comment-${article}`;
+    const sk = new Date().toISOString();
 
     await updateOne({
       tableName: "Nitalogy",
       item: {
-        pk: "comment",
+        pk,
         sk,
         comment,
         author: user.name,
@@ -23,8 +24,7 @@ export async function POST(request) {
 
     const comments = await find({
       tableName: "Nitalogy",
-      pk: "comment",
-      sk,
+      pk,
     });
 
     return NextResponse.json({ success: true, comments: comments.Items });

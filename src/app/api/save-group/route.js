@@ -19,7 +19,6 @@ export async function POST(request) {
   try {
     const user = decodeToken(request) || {};
     const { base64 } = image
-    console.log(base64)
     const base64Data = base64.replace(/^data:image\/\w+;base64,/, "");
     const imageBuffer = Buffer.from(base64Data, "base64");
     const fileType = base64
@@ -27,13 +26,6 @@ export async function POST(request) {
       .split("/")[1];
 
     const fileName = `${uuidv4()}.${fileType}`;
-
-    console.log({
-      Bucket: process.env.BUCKET_ISSUER_DOCUMENTS,
-      Key: fileName,
-      Body: imageBuffer,
-    })
-    
     const checkUpload = new Upload({
       client: s3Client,
       params: {
@@ -60,8 +52,6 @@ export async function POST(request) {
     await updateOne({ tableName: "Nitalogy", item: documentItem });
     return NextResponse.json({ success: true, documentItem });
   } catch (err) {
-    console.error("++++++");
-    console.error(err);
-    console.error("++++++");
+    return NextResponse.json({ success: false, error:err });
   }
 }

@@ -18,16 +18,18 @@ const Navigation = lazy(() => import("../../Component/Navigation"));
 export default function Group() {
   const [localUser, setLocalUser] = useState(null);
   const [myGroups, setMyGroups] = useState([]);
+  const [myComments, setMyComments] = useState([]);
 
   useEffect(() => {
     const localUser = localStorage.getItem("localUser");
     setLocalUser(JSON.parse(localUser));
 
-    const fetchdata = async () => {
+    const fetchGroup = async () => {
       const { data } = await axios.post("/api/get-groups", {});
       setMyGroups(data.myGroups);
     };
-    fetchdata();
+
+    fetchGroup();
   }, []);
 
   return (
@@ -67,10 +69,6 @@ export default function Group() {
                       </Grid>
                     ))}
                   </Grid>
-                </div>
-                <Divider />
-                <div className="pt-5 pb-5">
-                  <h1 className="pb-5 pt-5">My Comments</h1>
                 </div>
               </CardContent>
             </Card>
