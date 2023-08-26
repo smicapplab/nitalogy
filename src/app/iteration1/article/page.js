@@ -80,6 +80,16 @@ export default function Article() {
     if (articlesLiked) {
       setLiked(true);
     }
+
+    const fetchComments = async () => {
+      const { data } = await axios.post("/api/get-comments", {
+        article: index,
+      });
+
+      setComments(data.comments);
+    };
+
+    fetchComments();
   }, []);
 
   return (
@@ -149,17 +159,30 @@ export default function Article() {
           <div className="container max-w-screen-lg pt-10 ">
             <Card variant="outlined" sx={{ padding: 5 }}>
               <h1>Comments</h1>
+              <br />
               {comments && comments.length > 0 ? (
                 <>
                   <div className="w-full">
                     <Grid container spacing={2}>
                       {comments.map((comment) => (
-                        <Grid item md={1}>
+                        <div className="p-5 flex w-full flex-row">
                           <Avatar {...stringAvatar(comment.author)}>
                             {comment.author &&
                               comment.author.substring(0, 1).toUpperCase()}
                           </Avatar>
-                        </Grid>
+                          <div className="ml-2 p-2 bg-slate-200 rounded-3xl ">
+                            {comment.comment}
+                          </div>
+                          {/* <Grid item md={1} sx={{ padding: 1 }}>
+                            <Avatar {...stringAvatar(comment.author)}>
+                              {comment.author &&
+                                comment.author.substring(0, 1).toUpperCase()}
+                            </Avatar>
+                          </Grid>
+                          <Grid item md={11}>
+
+                          </Grid> */}
+                        </div>
                       ))}
                     </Grid>
                   </div>

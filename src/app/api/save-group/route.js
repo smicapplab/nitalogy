@@ -18,11 +18,12 @@ export async function POST(request) {
 
   try {
     const user = decodeToken(request) || {};
-
-    const base64Data = image.base64.replace(/^data:image\/\w+;base64,/, "");
+    const { base64 } = image
+    console.log(base64)
+    const base64Data = base64.replace(/^data:image\/\w+;base64,/, "");
     const imageBuffer = Buffer.from(base64Data, "base64");
-    const fileType = image.base64
-      .substring("data:".length, image.base64.indexOf(";base64"))
+    const fileType = base64
+      .substring("data:".length, base64.indexOf(";base64"))
       .split("/")[1];
 
     const fileName = `${uuidv4()}.${fileType}`;
@@ -52,6 +53,8 @@ export async function POST(request) {
     await updateOne({ tableName: "Nitalogy", item: documentItem });
     return NextResponse.json({ success: true, documentItem });
   } catch (err) {
+    console.error("++++++");
     console.error(err);
+    console.error("++++++");
   }
 }
