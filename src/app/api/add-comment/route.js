@@ -18,7 +18,6 @@ export async function POST(request) {
         comment,
         author: user.name,
         gsi2: user.email,
-        dateSubmitted: new Date().toISOString(),
       },
     });
 
