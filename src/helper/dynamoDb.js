@@ -128,6 +128,8 @@ const updateOne = async ({ item, tableName }) => {
     ReturnValues: "ALL_NEW",
   };
 
+  console.log(params);
+
   const response = await documentClient.send(new UpdateCommand(params));
   return response;
 };

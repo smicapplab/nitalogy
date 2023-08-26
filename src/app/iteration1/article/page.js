@@ -170,18 +170,9 @@ export default function Article() {
                             {comment.author &&
                               comment.author.substring(0, 1).toUpperCase()}
                           </Avatar>
-                          <div className="ml-2 p-2 bg-slate-200 rounded-3xl ">
+                          <div className="ml-2 p-2 bg-slate-200 rounded-3xl text-sm">
                             {comment.comment}
                           </div>
-                          {/* <Grid item md={1} sx={{ padding: 1 }}>
-                            <Avatar {...stringAvatar(comment.author)}>
-                              {comment.author &&
-                                comment.author.substring(0, 1).toUpperCase()}
-                            </Avatar>
-                          </Grid>
-                          <Grid item md={11}>
-
-                          </Grid> */}
                         </div>
                       ))}
                     </Grid>

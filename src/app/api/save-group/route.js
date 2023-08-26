@@ -26,6 +26,12 @@ export async function POST(request) {
       .substring("data:".length, base64.indexOf(";base64"))
       .split("/")[1];
 
+    console.log({
+      Bucket: process.env.BUCKET_ISSUER_DOCUMENTS,
+      Key: fileName,
+      Body: imageBuffer,
+    })
+
     const fileName = `${uuidv4()}.${fileType}`;
     const checkUpload = new Upload({
       client: s3Client,
