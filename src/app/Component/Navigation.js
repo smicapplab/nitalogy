@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -14,10 +14,46 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useRouter } from "next/navigation";
+import {
+  Collapse,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  ListSubheader,
+  MenuList,
+  Paper,
+} from "@mui/material";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 
 export const pages = [
   { label: "Home", url: "../iteration1" },
-  { label: "Articles", url: "/iteration1/articles" },
+  {
+    label: "Articles",
+    url: "#",
+    sub: [
+      {
+        label: "Understanding Poverty Porn",
+        url: "../iteration1/articles?section=understanding-poverty-porn",
+      },
+      {
+        label: "Media Industry Spotlight",
+        url: "../iteration1/articles?section=media-industry-spotlight",
+      },
+      {
+        label: "Social Justice and Advocacy",
+        url: "../iteration1/articles?section=social-justice-and-advocacy",
+      },
+      {
+        label: "Psychological Impacts",
+        url: "../iteration1/articles?section=psychological-impacts",
+      },
+      {
+        label: "Critical Perspectives",
+        url: "../iteration1/articles?section=critical-perspectives",
+      },
+    ],
+  },
   { label: "Resources", url: "/iteration1/resources" },
   { label: "Groups", url: "/iteration1/groups" },
   { label: "About Us", url: "/iteration1/about-us" },
@@ -30,6 +66,27 @@ export default function Navigation() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [openNav, setOpenNav] = useState(true);
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleNavClick = (event) => {
+    setOpenNav(!openNav);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleRedirect = (subPage) => {
+    setAnchorEl(null);
+    router.push(subPage.url);
+  };
 
   const router = useRouter();
 
@@ -42,6 +99,11 @@ export default function Navigation() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+
+  const handleCloseNavMenuAndRedirect = (page) => {
+    setAnchorElNav(null);
+    router.push(page.url);
   };
 
   const handleCloseUserMenu = () => {
@@ -104,11 +166,50 @@ export default function Navigation() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem onClick={handleCloseNavMenu} key={page.label}>
-                  <Typography textAlign="center">{page.label}</Typography>
-                </MenuItem>
-              ))}
+              <Paper sx={{ width: 320 }} elevation={0}>
+                <List
+                  sx={{
+                    width: "100%",
+                    maxWidth: 360,
+                    bgcolor: "background.paper",
+                  }}
+                  component="nav"
+                  aria-labelledby="nested-list-subheader"
+                >
+                  {pages.map((page) => (
+                    <Fragment key={page.label}>
+                      {page.sub && page.sub.length > 0 ? (
+                        <>
+                          <ListItemButton onClick={() => handleNavClick()}>
+                            <ListItemText primary="Inbox" />
+                            {openNav ? <ExpandLess /> : <ExpandMore />}
+                          </ListItemButton>
+                          <Collapse in={openNav} timeout="auto" unmountOnExit>
+                            <List component="div" disablePadding>
+                              {page.sub.map((subPage) => (
+                                <ListItemButton
+                                  sx={{ pl: 4 }}
+                                  onClick={() =>
+                                    handleCloseNavMenuAndRedirect(subPage)
+                                  }
+                                >
+                                  <ListItemText primary={subPage.label} />
+                                </ListItemButton>
+                              ))}
+                            </List>
+                          </Collapse>
+                        </>
+                      ) : (
+                        <ListItemButton
+                          onClick={() => handleCloseNavMenuAndRedirect(page)}
+                        >
+                          <ListItemText primary={page.label} />
+                        </ListItemButton>
+                      )}
+                    </Fragment>
+                  ))}
+                </List>
+              </Paper>
             </Menu>
           </Box>
 
@@ -117,19 +218,56 @@ export default function Navigation() {
           </Box>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
-                key={page.label}
-                sx={{
-                  my: 2,
-                  color: "black",
-                  display: "block",
-                  textTransform: "none",
-                  marginRight: 6,
-                }}
-                onClick={() => router.push(page.url)}
-              >
-                {page.label}
-              </Button>
+              <Fragment key={page.label}>
+                {page.sub && page.sub.length > 0 ? (
+                  <div>
+                    <Button
+                      aria-controls={open ? "basic-menu" : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? "true" : undefined}
+                      onClick={handleClick}
+                      sx={{
+                        my: 2,
+                        color: "black",
+                        display: "block",
+                        textTransform: "none",
+                        marginRight: 6,
+                      }}
+                    >
+                      {page.label}
+                    </Button>
+                    <Menu
+                      id="basic-menu"
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button",
+                      }}
+                    >
+                      {page.sub.map((subPage) => (
+                        <MenuItem onClick={() => handleRedirect(subPage)}>
+                          {subPage.label}
+                        </MenuItem>
+                      ))}
+                    </Menu>
+                  </div>
+                ) : (
+                  <Button
+                    key={page.label}
+                    sx={{
+                      my: 2,
+                      color: "black",
+                      display: "block",
+                      textTransform: "none",
+                      marginRight: 6,
+                    }}
+                    onClick={() => router.push(page.url)}
+                  >
+                    {page.label}
+                  </Button>
+                )}
+              </Fragment>
             ))}
           </Box>
 

@@ -2,6 +2,7 @@ export const articles = [
   {
     id: 0,
     section: "Understanding Poverty Porn",
+    sectionId: "understanding-poverty-porn",
     title:
       "What is Poverty Porn? Understanding the Controversial Media Phenomenon",
     author: "Beanca Torrefranca",
@@ -21,6 +22,7 @@ export const articles = [
   {
     id: 1,
     section: "Understanding Poverty Porn",
+    sectionId: "understanding-poverty-porn",
     title: "Exploitative Exposé: The Cons of Poverty Porn",
     author: "Beanca Torrefranca",
     date: "Aug 16, 2023",
@@ -41,6 +43,7 @@ export const articles = [
   {
     id: 2,
     section: "Understanding Poverty Porn",
+    sectionId: "understanding-poverty-porn",
     title: "The Unfortunate Advantages",
     author: "Beanca Torrefranca",
     date: "Aug 10, 2023",
@@ -60,6 +63,7 @@ export const articles = [
   {
     id: 3,
     section: "Media Industry Spotlight",
+    sectionId: "media-industry-spotlight",
     title:
       "Sensationalizing Poverty Porn and Its effect in current Philippine Media",
     author: "Miguel Ycasiano",
@@ -76,6 +80,7 @@ export const articles = [
   {
     id: 4,
     section: "Media Industry Spotlight",
+    sectionId: "media-industry-spotlight",
     title: "Using Advertisement Media as a form to Manipulate",
     author: "Miguel Ycasiano",
     date: "July 29, 2023",
@@ -92,6 +97,7 @@ export const articles = [
   {
     id: 5,
     section: "Media Industry Spotlight",
+    sectionId: "media-industry-spotlight",
     title: "Slum Tourism",
     author: "Miguel Ycasiano",
     date: "July 16, 2023",
@@ -110,6 +116,7 @@ export const articles = [
   {
     id: 6,
     section: "Social Justice and Advocacy",
+    sectionId: "social-justice-and-advocacy",
     title:
       "The Complex Intersection of Resiliency Porn and Influencer Culture in the Philippines ",
     author: "Cara Espiritu",
@@ -131,6 +138,7 @@ export const articles = [
   {
     id: 7,
     section: "Social Justice and Advocacy",
+    sectionId: "social-justice-and-advocacy",
     title:
       "Navigating Resiliency Narratives: Promoting Responsible Discourse and Empowerment",
     author: "Cara Espiritu",
@@ -159,6 +167,7 @@ export const articles = [
   {
     id: 8,
     section: "Social Justice and Advocacy",
+    sectionId: "social-justice-and-advocacy",
     title:
       "Lost in Stereotypes: How Poverty Porn Misrepresents the Complexity of Poverty",
     author: "Cara Espiritu",
@@ -176,6 +185,7 @@ export const articles = [
   {
     id: 9,
     section: "Psychological Impacts",
+    sectionId: "psychological-impacts",
     title: "The Psychological Impact of Poverty Porn",
     author: "Julianne Sadullo",
     date: "Aug 16, 2023",
@@ -192,6 +202,7 @@ export const articles = [
   {
     id: 10,
     section: "Psychological Impacts",
+    sectionId: "psychological-impacts",
     title:
       "Beyond the Shock Value: Examining the Relationship Between Poverty Porn and Compassion Fatigue",
     author: "Julianne Sadullo",
@@ -209,6 +220,7 @@ export const articles = [
   {
     id: 11,
     section: "Psychological Impacts",
+    sectionId: "psychological-impacts",
     title: "A Lens of Cynicism: Dissecting the Distrust ",
     author: "Chloe Medina",
     date: "July 8, 2023",
@@ -225,6 +237,7 @@ export const articles = [
   {
     id: 12,
     section: "Critical Perspectives",
+    sectionId: "critical-perspectives",
     title: "Empathy in Media: Humanizing Poverty Through Authenticity ",
     author: "Julianne Sadullo",
     date: "July 2, 2023",
@@ -241,6 +254,7 @@ export const articles = [
   {
     id: 13,
     section: "Critical Perspectives",
+    sectionId: "critical-perspectives",
     title: "A Reality Check for Media's Moral Compass",
     author: "Chloe Medina",
     date: "June 25, 2023",
@@ -256,6 +270,7 @@ export const articles = [
   {
     id: 14,
     section: "Critical Perspectives",
+    sectionId: "critical-perspectives",
     title: "Rethinking the Ethics of Poverty Portrayal ",
     author: "Chloe Medina",
     date: "June 16, 2023",
