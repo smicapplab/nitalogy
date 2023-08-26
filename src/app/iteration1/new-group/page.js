@@ -21,6 +21,7 @@ const Navigation = lazy(() => import("../../Component/Navigation"));
 
 export default function NewGroup() {
   const [newGroup, setNewGroup] = useState({});
+  const [isEnabled, setIsEnabled] = useState(false);
   const [image, setImage] = useState(null);
   const inputRef = useRef(null);
   const router = useRouter();
@@ -28,6 +29,10 @@ export default function NewGroup() {
   const onValueChanged = (event) => {
     const { name, value } = event.target;
     setNewGroup({ ...newGroup, [name]: value });
+
+    if (newGroup.name && newGroup.description && newGroup.url && image && image.base64 ) {
+      setIsEnabled(true);
+    }
   };
 
   const handlePhotoUpload = async (event) => {
@@ -36,6 +41,10 @@ export default function NewGroup() {
       const { name } = file;
       const base64 = await toBase64(file);
       setImage({ name, base64 });
+
+      if (newGroup.name && newGroup.description && newGroup.url && base64 ) {
+        setIsEnabled(true);
+      }
     }
   };
 
@@ -143,6 +152,7 @@ export default function NewGroup() {
               </CardContent>
               <CardActions sx={{ paddingLeft: 2 }}>
                 <Button
+                  disabled={!isEnabled}
                   variant="contained"
                   color="primary"
                   sx={{ textTransform: "none" }}
