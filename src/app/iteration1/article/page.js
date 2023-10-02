@@ -1,27 +1,17 @@
 "use client";
 
-import { Fragment, lazy, useEffect, useState } from "react";
-import {
-  Avatar,
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Divider,
-  Grid,
-  IconButton,
-  ThemeProvider,
-} from "@mui/material";
+import { lazy, useEffect, useState } from "react";
+import { Box, Button, Divider, Grid, ThemeProvider } from "@mui/material";
 import { ShareSocial } from "react-share-social";
 import { useRouter, useSearchParams } from "next/navigation";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import { articles } from "@/data/data";
 import LightTheme from "../theme";
 import InputText from "@/app/Component/InputText";
-import { stringAvatar } from "@/helper/avatarHelper";
 import axios from "axios";
 import { format } from "date-fns";
+import { Saira_Extra_Condensed, Sofia_Sans } from "next/font/google";
+const sofia = Sofia_Sans({ subsets: ["latin"], weight: "800" });
+const saira = Saira_Extra_Condensed({ subsets: ["latin"], weight: "600" });
 const Footer = lazy(() => import("../../Component/Footer"));
 const Navigation = lazy(() => import("../../Component/Navigation"));
 const ArticleCardMain = lazy(() => import("../../Component/ArticleCardMain"));
@@ -42,10 +32,10 @@ export default function Article() {
   };
 
   const submitComment = async () => {
-    const _comment = comment
+    const _comment = comment;
     setComment(null);
     const { data } = await axios.post("/api/add-comment", {
-      comment:_comment,
+      comment: _comment,
       article: article.id,
     });
     setComments(data.comments);
@@ -61,8 +51,8 @@ export default function Article() {
   };
 
   useEffect(() => {
-    const localUser = localStorage.getItem("localUser");
-    setLocalUser(JSON.parse(localUser));
+    const localUserStorage = localStorage.getItem("localUser");
+    setLocalUser(JSON.parse(localUserStorage));
 
     if (index) {
       if (articles[index]) {
@@ -96,153 +86,145 @@ export default function Article() {
 
   return (
     <ThemeProvider theme={LightTheme}>
-      <Fragment>
-        <Navigation />
-        <Box display="flex" justifyContent="center" alignContent="center">
-          <div className="container max-w-screen-lg pt-36 ">
-            {article && (
-              <Card variant="outlined" sx={{ paddingLeft: 5, paddingRight: 5 }}>
-                <CardContent>
-                  <h1 className="text-xl font-bold">{article.title}</h1>
-                  <div className="flex place-content-between">
-                    <p>by: {article.author}</p>
-                    <p>{article.date}</p>
-                  </div>
-                </CardContent>
-                <CardMedia
-                  component="img"
-                  image={article.image}
-                  alt={article.title}
-                />
-                <CardContent>
-                  <ShareSocial
-                    url={window.location.href}
-                    socialTypes={[
-                      "facebook",
-                      "twitter",
-                      "whatsapp",
-                      "linkedin",
-                      "telegram",
-                      "reddit",
-                      "ok",
-                      "line",
-                    ]}
-                    onSocialButtonClicked={(data) => console.log(data)}
-                    style={{
-                      root: {
-                        border: "0px !important",
-                        margin: 0,
-                      },
-                      iconContainer: {
-                        backgroundColor: "red",
-                      },
-                      copyContainer: {
-                        display: "none",
-                      },
-                      title: {
-                        display: "none",
-                      },
-                    }}
-                  />
+      <Navigation />
+      <Box display="flex" justifyContent="center" alignContent="center">
+        {article && (
+          <div className="container max-w-screen-lg pt-36">
+            <div className="w-full relative ">
+              <img src={article?.image} alt={article?.title} />
+              <div className="absolute bottom-0 px-4 py-0 w-full text-4xl sm:text-6xl font-bold text-black">
+                <span className={saira.className}>{article.title}</span>
+              </div>
+            </div>
 
-                  <div dangerouslySetInnerHTML={{ __html: article.content }} />
-                  <div className="pt-16 w-full text-right">
-                    <IconButton onClick={likeArticle}>
-                      <FavoriteIcon sx={{ color: liked ? "red" : "grey" }} />
-                    </IconButton>
-                    {liked ? article.likes + 1 : article.likes || 0}
+            <div className={`${sofia.className} text-2xl uppercase pb-3 pt-5`}>
+              by {article.author}
+            </div>
+
+            <ShareSocial
+              url={window.location.href}
+              socialTypes={[
+                "facebook",
+                "twitter",
+                "whatsapp",
+                "linkedin",
+                "telegram",
+                "reddit",
+                "ok",
+                "line",
+              ]}
+              onSocialButtonClicked={(data) => console.log(data)}
+              style={{
+                root: {
+                  border: "0px !important",
+                  backgroundColor: "transparent",
+                  padding: 0,
+                  margin: 0,
+                },
+                iconContainer: {
+                  backgroundColor: "red",
+                },
+                copyContainer: {
+                  display: "none",
+                  padding: 0,
+                  margin: 0,
+                },
+                title: {
+                  display: "none",
+                },
+              }}
+            />
+            <div
+              dangerouslySetInnerHTML={{ __html: article.content }}
+              className="sm:columns-2"
+            />
+            <br />
+            <Divider />
+            <br />
+            <br />
+            <div className={`${saira.className} text-6xl`}>COMMENTS</div>
+            <br />
+
+            {comments && comments.length > 0 ? (
+              <>
+                <div className="w-full">
+                  {comments.map((comment) => (
+                    <div className="relative w-full pb-5">
+                      <div
+                        className={`${sofia.className} absolute text-lg font-extrabold left-0`}
+                      >
+                        {comment.author}
+                      </div>
+                      <div className="absolute text-sm text-gray-700 right-0">
+                        {format(new Date(comment.sk), "MMM dd, yyyy")}
+                      </div>
+                      <br />
+                      <div>{comment.comment}</div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <p>No comments yet</p>
+            )}
+
+            <Grid container>
+              <Grid item xs={12} md={6}>
+                {localUser ? (
+                  <>
+                    <InputText
+                      label="Add Comment"
+                      maxWidth="100%"
+                      placeholder="Write a comment"
+                      rows={3}
+                      onChange={commentChanged}
+                      value={comment || ""}
+                    />
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      sx={{ textTransform: "none" }}
+                      onClick={submitComment}
+                    >
+                      Submit
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <p>Please login to comment</p>
+                    <Button
+                      variant="outlined"
+                      sx={{ textTransform: "none" }}
+                      onClick={() => router.push("/iteration1/login")}
+                    >
+                      Login
+                    </Button>
+                  </>
+                )}
+              </Grid>
+            </Grid>
+            <br />
+            <Divider />
+            {relatedArticles && (
+              <Box display="flex" justifyContent="center" alignContent="center">
+                <div className="container max-w-screen-lg pt-16 pb-10">
+                  <div className={`${saira.className} text-6xl`}>
+                    RELATED ARTICLES
                   </div>
-                </CardContent>
-              </Card>
+                  <Grid container spacing={2}>
+                    {relatedArticles.map((a) => (
+                      <Grid item xs={12} md={6} xl={4} key={a.id}>
+                        <ArticleCardMain article={a} />
+                      </Grid>
+                    ))}
+                  </Grid>
+                </div>
+              </Box>
             )}
           </div>
-        </Box>
-        <Box display="flex" justifyContent="center" alignContent="center">
-          <div className="container max-w-screen-lg pt-10 ">
-            <Card variant="outlined" sx={{ padding: 5 }}>
-              <h1>Comments</h1>
-              <br />
-              {comments && comments.length > 0 ? (
-                <>
-                  <div className="w-full">
-                    <Grid container spacing={2}>
-                      {comments.map((comment) => (
-                        <div className="p-5 flex w-full flex-row">
-                          <Avatar {...stringAvatar(comment.author)}>
-                            {comment.author &&
-                              comment.author.substring(0, 1).toUpperCase()}
-                          </Avatar>
-                          <div className="ml-2 p-2 bg-slate-200 rounded-3xl text-sm">
-                            <strong>{comment.author}</strong> ( { format( new Date(comment.sk), "MMM dd, yyyy" ) } )
-                            <Divider />
-                            {comment.comment}
-                          </div>
-                        </div>
-                      ))}
-                    </Grid>
-                  </div>
-                </>
-              ) : (
-                <p>No comments yet</p>
-              )}
-              <Divider />
-              <br />
-              <br />
-              <Grid container>
-                <Grid item xs={12} md={6}>
-                  {localUser ? (
-                    <>
-                      <InputText
-                        label="Add Comment"
-                        maxWidth="100%"
-                        placeholder="Write a comment"
-                        rows={3}
-                        onChange={commentChanged}
-                        value={comment || ""}
-                      />
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        sx={{ textTransform: "none" }}
-                        onClick={submitComment}
-                      >
-                        Submit
-                      </Button>
-                    </>
-                  ) : (
-                    <>
-                      <p>Please login to comment</p>
-                      <Button
-                        variant="outlined"
-                        sx={{ textTransform: "none" }}
-                        onClick={() => router.push("/iteration1/login")}
-                      >
-                        Login
-                      </Button>
-                    </>
-                  )}
-                </Grid>
-              </Grid>
-            </Card>
-          </div>
-        </Box>
-        {relatedArticles && (
-          <Box display="flex" justifyContent="center" alignContent="center">
-            <div className="container max-w-screen-lg pt-20 ">
-              <h1>Related Articles</h1>
-              <Grid container spacing={2}>
-                {relatedArticles.map((a) => (
-                  <Grid item xs={12} md={6} xl={4} key={a.id}>
-                    <ArticleCardMain article={a} />
-                  </Grid>
-                ))}
-              </Grid>
-            </div>
-          </Box>
         )}
-
-        <Footer />
-      </Fragment>
+      </Box>
+      <Footer />
     </ThemeProvider>
   );
 }

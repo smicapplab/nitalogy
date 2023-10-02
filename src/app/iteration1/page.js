@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment, lazy } from "react";
-import { Box, Button, Grid, ThemeProvider } from "@mui/material";
+import { Box, Grid, ThemeProvider } from "@mui/material";
 import LightTheme from "./theme";
 import { articles } from "@/data/data";
 import { Saira_Extra_Condensed } from "next/font/google";
@@ -10,7 +10,6 @@ const ArticleCard = lazy(() => import("../Component/ArticleCard"));
 const ArticleCardMain = lazy(() => import("../Component/ArticleCardMain"));
 const Navigation = lazy(() => import("../Component/Navigation"));
 const Footer = lazy(() => import("../Component/Footer"));
-
 const saira = Saira_Extra_Condensed({ subsets: ["latin"], weight: "600" });
 
 export default function Home() {

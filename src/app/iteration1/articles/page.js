@@ -6,6 +6,9 @@ import LightTheme from "../theme";
 import { articles } from "@/data/data";
 import ArticleCardMain from "@/app/Component/ArticleCardMain";
 import { useSearchParams } from "next/navigation";
+import { Sofia_Sans } from "next/font/google";
+
+const sofia = Sofia_Sans({ subsets: ["latin"], weight: "800" });
 const Footer = lazy(() => import("../../Component/Footer"));
 const Navigation = lazy(() => import("../../Component/Navigation"));
 const ArticleNavigation= lazy(() => import("./components/ArticleNavigation"));
@@ -80,7 +83,7 @@ export default function Articles() {
             </div>
             <div
               dangerouslySetInnerHTML={{ __html: pageTitle[selectedIndex] }}
-              className="pb-5"
+              className={`${sofia.className} text-2xl pb-5`}
             />
             <Grid container spacing={2}>
               {articlesToDisplay.map((article) => (
