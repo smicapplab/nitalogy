@@ -1,4 +1,7 @@
 import './globals.css'
+import { Antic } from "next/font/google";
+
+const antic = Antic({ subsets: ["latin"], weight: "400" });
 
 export const metadata = {
   title: 'Behind The Screen Magazine',
@@ -26,7 +29,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={ antic.className }>
       <body suppressHydrationWarning={true} >{children}</body>
     </html>
   )

@@ -4,56 +4,59 @@ import { Fragment, lazy } from "react";
 import { Box, Button, Grid, ThemeProvider } from "@mui/material";
 import LightTheme from "./theme";
 import { articles } from "@/data/data";
+import { Saira_Extra_Condensed } from "next/font/google";
+
 const ArticleCard = lazy(() => import("../Component/ArticleCard"));
 const ArticleCardMain = lazy(() => import("../Component/ArticleCardMain"));
 const Navigation = lazy(() => import("../Component/Navigation"));
-const Hero = lazy(() => import("../Component/Hero"));
 const Footer = lazy(() => import("../Component/Footer"));
+
+const saira = Saira_Extra_Condensed({ subsets: ["latin"], weight: "600" });
 
 export default function Home() {
   return (
     <ThemeProvider theme={LightTheme}>
       <Fragment>
         <Navigation />
-        <Hero />
+        {/* <Hero /> */}
         <Box display="flex" justifyContent="center" alignContent="center">
-          <div className="max-w-screen-lg pt-10 pl-5 pr-5">
-            <p>
-              At <strong>Behind The Screen Magazine</strong>, we invite you to
-              embark on a journey that transcends the boundaries of traditional
-              understanding. Our platform is dedicated to shedding light on a
-              complex and often misunderstood issue: poverty porn.
-            </p>
-            <p>
-              In a world where information is easily accessible, we recognize
-              the power of media in shaping perspectives. However, we also
-              acknowledge the pitfalls that come with sensationalized narratives
-              that exploit the struggles of the less fortunate for shock value
-              or emotional manipulation.
-            </p>
-            <p>
-              Here, we strive for a different approach. Our goal is to foster
-              understanding, empathy, and genuine awareness about the realities
-              of poverty without exploiting the vulnerable. We believe in
-              sharing stories that honor the dignity and resilience of
-              individuals facing adversity while promoting informed discussions
-              that lead to sustainable solutions.
-            </p>
-            <p>
-              Join us in dismantling the misconceptions surrounding poverty and
-              its portrayal. Through thought-provoking articles, respectful
-              conversations, and insightful resources, we aim to challenge
-              perceptions, inspire change, and encourage a collective effort
-              towards a more equitable world.
-            </p>
-            <p>
-              Thank you for being a part of this journey towards compassionate
-              awareness. Your engagement and open-mindedness are vital as we
-              work together to create a positive impact that extends beyond the
-              digital realm.
-            </p>
-            <div className="text-center w-full pt-11">
-              <h1>Latest Articles</h1>
+          <div className="max-w-screen-lg pt-20 pl-5 pr-5">
+            <div className="relative flex bg-center grayscale hover:grayscale-0">
+              <img
+                src="/images/banner1.png"
+                alt="hero"
+                className="w-full max-w-screen-lg "
+              />
+              <div className="absolute bottom-0 px-4 py-0 w-full text-9xl font-bold text-white">
+                <span className={saira.className}>BEHIND</span>
+              </div>
+            </div>
+            <Grid container spacing={0}>
+              <Grid item xs={12} md={6}>
+                <div className="px-4 py-0 w-full text-9xl font-bold text-black">
+                  <span className={saira.className}>THESCREEN</span>
+                </div>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <p className="pt-5 text-right">
+                  At <strong>Behind The Screen Magazine</strong>, we invite you
+                  to embark on a journey that transcends the boundaries of
+                  traditional understanding. Our platform is dedicated to
+                  shedding light on a complex and often misunderstood issue:
+                  poverty porn.
+                </p>
+                <p className="text-right">
+                  In a world where information is easily accessible, we
+                  recognize the power of media in shaping perspectives. However,
+                  we also acknowledge the pitfalls that come with
+                  sensationalized narratives that exploit the struggles of the
+                  less fortunate for shock value or emotional manipulation.
+                </p>
+              </Grid>
+            </Grid>
+
+            <div className="w-full pt-11">
+              <h1 className={`${saira.className} text-5xl`}>Latest Articles</h1>
             </div>
             <ArticleCard article={articles[0]} />
             <br />
