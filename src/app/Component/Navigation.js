@@ -127,7 +127,7 @@ export default function Navigation() {
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, mr: 1 }}>
             <img
-              src="/images/logo.png"
+              src="/images/new-logo.png"
               alt="logo"
               className="h-16 cursor-pointer"
               onClick={() => router.push("/iteration1")}
@@ -136,9 +136,6 @@ export default function Navigation() {
               onClick={() => router.push("/iteration1")}
               sx={{ textTransform: "none" }}
             >
-              <h1 className="text-black font-bold pt-5 text-lg">
-                Behind The Screen Magazine
-              </h1>
             </Button>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>

@@ -6,7 +6,7 @@ const LightTheme = createTheme({
       main: "#000000",
     },
     primary: {
-      main: "#194175",
+      main: "#000000",
       contrastText: "#fff", //button text white instead of black
     },
     background: {
@@ -15,7 +15,7 @@ const LightTheme = createTheme({
     secondary: {
       backgroundColor: "#ffffff",
       main: "#8cc63e",
-      contrastText: "#194175",
+      contrastText: "#000000",
     },
     tertiary: {
       backgroundColor: "white",

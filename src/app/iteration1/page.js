@@ -60,7 +60,7 @@ export default function Home() {
             </div>
             <ArticleCard article={articles[0]} />
             <br />
-            <Grid container spacing={1}>
+            <Grid container spacing={2}>
               <Grid item xs={12} md={4}>
                 <ArticleCardMain article={articles[1]} noContent={true} />
               </Grid>
@@ -71,18 +71,6 @@ export default function Home() {
                 <ArticleCardMain article={articles[9]} noContent={true} />
               </Grid>
             </Grid>
-            <br />
-            <Button variant="outlined" sx={{ textTransform: "none" }}>
-              Browse Articles
-            </Button>
-            <div
-              style={{
-                color: "#194175",
-                width: "100%",
-                minHeight: 200,
-                paddingTop: 50,
-              }}
-            ></div>
           </div>
         </Box>
         <Footer />

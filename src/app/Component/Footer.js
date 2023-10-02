@@ -9,13 +9,12 @@ import {
   InputAdornment,
   TextField,
 } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import EmailIcon from "@mui/icons-material/Email";
 import InputText from "./InputText";
 import { useState } from "react";
-import { pages } from "./Navigation";
 import { useRouter } from "next/navigation";
+import { Sofia_Sans } from "next/font/google";
+const sofia = Sofia_Sans({ subsets: ["latin"], weight: "800" });
 
 export const links = [
   { label: "Privacy", url: "/iteration1/privacy" },
@@ -24,10 +23,8 @@ export const links = [
 ];
 
 export default function Footer() {
-  const theme = useTheme();
   const [email, setEmail] = useState(null);
   const [contact, setContact] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const router = useRouter();
 
   const onSubChanged = (e) => {
@@ -57,31 +54,17 @@ export default function Footer() {
       sx={{
         marginTop: 5,
         padding: 5,
-        backgroundColor: "#323232",
+        backgroundColor: "#000000",
         color: "#ffffff",
       }}
     >
-      <Grid container spacing={2}>
+      <Grid container spacing={4}>
         <Grid item xs={12} sm={6} md={2}>
-          <h1>Explore</h1>
-          <ul>
-            {pages.map((page) => (
-              <li
-                className="cursor-pointer pt-2 text-gray-400 ml-2"
-                onClick={() => router.push(page.url)}
-              >
-                {page.label}
-              </li>
-            ))}
-          </ul>
-          <Divider />
-        </Grid>
-        <Grid item xs={12} sm={6} md={2}>
-          <h1>Company</h1>
+          <h1 className={`${sofia.className} text-lg`}>Company</h1>
           <ul>
             {links.map((link) => (
-              <li
-                className="cursor-pointer pt-2 text-gray-400 ml-2"
+              <li key={link.label}
+                className="cursor-pointer pt-2 text-white ml-2"
                 onClick={() => router.push(link.url)}
               >
                 {link.label}
@@ -91,7 +74,7 @@ export default function Footer() {
           <Divider />
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
-          <h2 className="text-xl font-medium">Subscribe</h2>
+          <h1 className={`${sofia.className} text-lg`}>Subscribe</h1>
           <p className="text-sm">
             Stay Informed, Make a Difference: Subscribe to Our Newsletter
           </p>
@@ -116,7 +99,7 @@ export default function Footer() {
                     <InputAdornment position="end">
                       <Button
                         variant="text"
-                        endIcon={<EmailIcon />}
+                        endIcon={<EmailIcon sx={{ color: "#000000" }} />}
                         onClick={() => onsubmitSubForm()}
                       >
                         Send
@@ -129,7 +112,7 @@ export default function Footer() {
           </div>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
-          <h2 className="text-xl font-medium">Contact Us</h2>
+          <h1 className={`${sofia.className} text-lg`}>Contact Us</h1>
           <InputText
             value={contact.fullName || ""}
             placeholder="Full Name"
@@ -149,14 +132,9 @@ export default function Footer() {
             onChange={onChange}
             name="message"
           />
-          <Button
-            onClick={onsubmitForm}
-            variant="contained"
-            color="primary"
-            sx={{ backgroundColor: "white" }}
-          >
-            Submit
-          </Button>
+          <div className={`${sofia.className} text-lg p-2 bg-white text-black w-24 text-center rounded cursor-pointer`} onClick={onsubmitForm}>
+            SUBMIT
+          </div>
         </Grid>
       </Grid>
     </Box>
