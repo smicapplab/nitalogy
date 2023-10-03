@@ -6,6 +6,9 @@ import LightTheme from "../theme";
 import Diversity1Icon from "@mui/icons-material/Diversity1";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { Saira_Extra_Condensed } from "next/font/google";
+
+const saira = Saira_Extra_Condensed({ subsets: ["latin"], weight: "600" });
 const Footer = lazy(() => import("../../Component/Footer"));
 const Navigation = lazy(() => import("../../Component/Navigation"));
 const GroupCard = lazy(() => import("./GroupCard"));
@@ -77,12 +80,14 @@ export default function Groups() {
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="container max-w-screen-lg pt-36 ">
             <div className="flex justify-between pb-10">
-              <h1 className="">Groups you can join!</h1>
+              <div className="px-4 py-0 w-full text-4xl md:text-8xl font-bold text-black">
+                <span className={saira.className}>GROUPS YOU CAN JOIN</span>
+              </div>
               <Button
                 variant="contained"
                 color="primary"
                 startIcon={<Diversity1Icon />}
-                sx={{ textTransform: "none" }}
+                sx={{ textTransform: "none", width: "200px !important", height: "50px !important" }}
                 onClick={() => createNewGroup()}
               >
                 New Group

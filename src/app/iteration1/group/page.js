@@ -14,6 +14,9 @@ import {
 import LightTheme from "../theme";
 import { useSearchParams } from "next/navigation";
 import { format } from "date-fns";
+import { Saira_Extra_Condensed } from "next/font/google";
+
+const saira = Saira_Extra_Condensed({ subsets: ["latin"], weight: "600" });
 const Footer = lazy(() => import("../../Component/Footer"));
 const Navigation = lazy(() => import("../../Component/Navigation"));
 
@@ -49,7 +52,7 @@ export default function Group() {
               <Card elevation={0}>
                 <CardMedia component="img" image={group?.image} />
                 <CardContent>
-                  <h1 className="text-lg">{group.name}</h1>
+                  <h1 className={`${saira.className} text-4xl pb-5`}>{group.name}</h1>
                   <div
                     dangerouslySetInnerHTML={{ __html: group.description }}
                     className="pb-10"

@@ -1,6 +1,5 @@
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
@@ -10,8 +9,10 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useEffect, useState } from "react";
-import { Button } from "@mui/material";
 import SlideshowIcon from "@mui/icons-material/Slideshow";
+import { Saira_Extra_Condensed } from "next/font/google";
+
+const saira = Saira_Extra_Condensed({ subsets: ["latin"], weight: "600" });
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -31,7 +32,7 @@ export default function FilmsCard({ film }) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  
+
   const openInNewTab = (url) => {
     window.open(url, "_blank", "noreferrer");
   };
@@ -54,7 +55,6 @@ export default function FilmsCard({ film }) {
 
   return (
     <Card>
-      <CardHeader title={film.title} subheader={film.sub} />
       <CardMedia
         component="img"
         height="194"
@@ -67,21 +67,10 @@ export default function FilmsCard({ film }) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton onClick={() => likeFilm()}>
-          <FavoriteIcon sx={{ color: liked ? "red" : "grey" }} />
-        </IconButton>
-        <IconButton onClick={() => openInNewTab(film.trailer)}>
-          <SlideshowIcon />
-        </IconButton>
-        {film.imdb && (
-          <Button
-            sx={{ textTransform: "none" }}
-            onClick={() => openInNewTab(film.imdb)}
-          >
-            Read More
-          </Button>
-        )}
-
+        <div>
+          <div className={`${saira.className} text-2xl`}>{film.title}</div>
+          <div>{film.sub}</div>
+        </div>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -92,10 +81,32 @@ export default function FilmsCard({ film }) {
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Description:</Typography>
-          <Typography paragraph><div dangerouslySetInnerHTML={{ __html: film.description }} /></Typography>
+        <CardContent className="bg-black text-white">
+          <Typography paragraph>
+            <div dangerouslySetInnerHTML={{ __html: film.description }} />
+          </Typography>
         </CardContent>
+        <div className="flex row justify-between p-2 bg-gray-300 w-full">
+          <div className="flex row">
+            {film.imdb && (
+              <img
+                src="/images/imdb.png"
+                alt="imdb"
+                className="w-10 h-10 cursor-pointer"
+                onClick={() => openInNewTab(film.imdb)}
+              />
+            )}
+            <IconButton
+              className="place-self-end"
+              onClick={() => openInNewTab(film.trailer)}
+            >
+              <SlideshowIcon />
+            </IconButton>
+          </div>
+          <IconButton onClick={() => likeFilm()}>
+            <FavoriteIcon sx={{ color: liked ? "red" : "grey" }} />
+          </IconButton>
+        </div>
       </Collapse>
     </Card>
   );

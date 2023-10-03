@@ -3,6 +3,9 @@
 import { Fragment, lazy, useEffect } from "react";
 import { Box, Grid, ThemeProvider } from "@mui/material";
 import LightTheme from "../theme";
+import { Saira_Extra_Condensed } from "next/font/google";
+
+const saira = Saira_Extra_Condensed({ subsets: ["latin"], weight: "600" });
 const Footer = lazy(() => import("../../Component/Footer"));
 const Navigation = lazy(() => import("../../Component/Navigation"));
 
@@ -15,7 +18,11 @@ export default function AboutUs() {
         <Navigation />
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="container max-w-screen-xl pt-36 ">
-            <h1 className="text-xl pb-11">About Behind The Screen Magazine</h1>
+            <div className="px-4 py-0 w-full text-4xl md:text-8xl font-bold text-black">
+              <span className={saira.className}>
+                ABOUT BEHIND THE SCREEN MAGAZINE
+              </span>
+            </div>
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
                 <img
@@ -25,16 +32,16 @@ export default function AboutUs() {
                 />
               </Grid>
               <Grid item xs={12} md={6}>
-                <h1>About The Website</h1>
+                <h1 className={`${saira.className} text-2xl`}>About The Website</h1>
                 <p>
-                  Welcome to Behind The Screen Magazine, a dedicated platform that aims
-                  to shed light on the controversial and often misunderstood
-                  concept of poverty porn. Our platform was founded with a deep
-                  commitment to raising awareness, promoting critical discourse,
-                  and driving positive change in the realm of media
-                  representation.
+                  Welcome to Behind The Screen Magazine, a dedicated platform
+                  that aims to shed light on the controversial and often
+                  misunderstood concept of poverty porn. Our platform was
+                  founded with a deep commitment to raising awareness, promoting
+                  critical discourse, and driving positive change in the realm
+                  of media representation.
                 </p>
-                <h1>Meet The Team</h1>
+                <h1 className={`${saira.className} text-2xl`}>Meet The Team</h1>
                 <p>
                   Beanca Torrefranca is a student at DLSU-CSB under the MMA
                   course, and the artist for the e-magazine.{" "}
@@ -51,7 +58,7 @@ export default function AboutUs() {
                   that respects the dignity and humanity of marginalized
                   populations.
                 </p>
-                <h1>Vision</h1>
+                <h1 className={`${saira.className} text-2xl`}>Vision</h1>
                 <p>
                   Our vision is a world where media representation is both
                   impactful and respectful, where the narratives of individuals

@@ -8,6 +8,9 @@ import { Button, ButtonGroup } from "@mui/material";
 import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Saira_Extra_Condensed } from "next/font/google";
+
+const saira = Saira_Extra_Condensed({ subsets: ["latin"], weight: "600" });
 
 export default function GroupCard({
   group,
@@ -40,7 +43,7 @@ export default function GroupCard({
         alt={group.name}
       />
       <CardContent>
-        <div className="truncate w-full pb-5">{group.name}</div>
+        <div className={`${saira.className} text-3xl truncate w-full pb-5`}>{group.name}</div>
         <div className="text-sm">
           <p>
             <strong>Members: </strong>

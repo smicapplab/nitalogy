@@ -16,6 +16,9 @@ import LightTheme from "../theme";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import { useFacebookLogin } from "react-facebook-login-hook";
+import { Saira_Extra_Condensed } from "next/font/google";
+
+const saira = Saira_Extra_Condensed({ subsets: ["latin"], weight: "600" });
 const Navigation = lazy(() => import("../../Component/Navigation"));
 const Footer = lazy(() => import("../../Component/Footer"));
 
@@ -72,9 +75,15 @@ export default function Login() {
               <CardContent
                 sx={{ paddingLeft: 15, paddingRight: 15, textAlign: "center" }}
               >
-                <p className="text-lg font-bold pb-10">Login</p>
+                <div className="w-full text-4xl md:text-8xl font-bold text-black pb-20">
+                  <span className={saira.className}>LOGIN</span>
+                </div>
                 <Button
-                  sx={{ backgroundColor: "#DB4437 !important", color: "white !important" }}
+                  sx={{
+                    backgroundColor: "#DB4437 !important",
+                    color: "white !important",
+                    height: "80px !important",
+                  }}
                   fullWidth
                   variant="outlined"
                   startIcon={<GoogleIcon />}
@@ -84,7 +93,11 @@ export default function Login() {
                 </Button>
                 <Divider sx={{ paddingTop: 5 }} />
                 <Button
-                  sx={{ backgroundColor: "#4267B2 !important", color: "white !important" }}
+                  sx={{
+                    backgroundColor: "#4267B2 !important",
+                    color: "white !important",
+                    height: "80px !important",
+                  }}
                   fullWidth
                   variant="outlined"
                   startIcon={<FacebookIcon />}
@@ -92,6 +105,7 @@ export default function Login() {
                 >
                   Login Using Facebook
                 </Button>
+                <p className="pb-20"></p>
               </CardContent>
             </Card>
           </div>

@@ -11,6 +11,9 @@ import {
 } from "@mui/material";
 import LightTheme from "../theme";
 import { films } from "@/data/data";
+import { Saira_Extra_Condensed } from "next/font/google";
+
+const saira = Saira_Extra_Condensed({ subsets: ["latin"], weight: "600" });
 const Footer = lazy(() => import("../../Component/Footer"));
 const Navigation = lazy(() => import("../../Component/Navigation"));
 const FilmsCard = lazy(() => import("./FilmsCard"));
@@ -26,12 +29,19 @@ export default function Resources() {
         <Navigation />
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="container max-w-screen-lg pt-36 ">
-            <h1>Documentaries and Films</h1>
-            <p>Some documentaries and films that, according to the public, have been criticized for being Poverty Porn due to some scenes. These include the sensationalization of poverty, its struggles, and sometimes romanticizing some scenes. </p>
+            <div className="px-4 py-0 w-full text-4xl md:text-8xl font-bold text-black">
+              <span className={saira.className}>DOCUMENTARIES AND FILMS</span>
+            </div>
+            <p>
+              Some documentaries and films that, according to the public, have
+              been criticized for being Poverty Porn due to some scenes. These
+              include the sensationalization of poverty, its struggles, and
+              sometimes romanticizing some scenes.{" "}
+            </p>
 
-            <Grid container spacing={2}>
+            <Grid container spacing={1}>
               {films.map((film) => (
-                <Grid item xs={12} md={6} key={film.title}>
+                <Grid item xs={12} md={4} key={film.title}>
                   <FilmsCard film={film} />
                 </Grid>
               ))}
@@ -42,9 +52,11 @@ export default function Resources() {
 
             <Card variant="outlined">
               <CardContent>
-                <h1>Other News Articles</h1>
+                <span className={`${saira.className} text-4xl md:text-8xl `}>
+                  OTHER NEWS ARTICLES
+                </span>
                 <Divider />
-                <h1>Poverty porn</h1>
+                <span className={`${saira.className} text-2xl`}>Poverty porn</span>
                 <p>By Brillante Ma Mendoza</p>
                 <p>
                   Being a Filipino is something I’m proud of. That a great
@@ -57,9 +69,13 @@ export default function Resources() {
                 <a href="https://entertainment.inquirer.net/409307/poverty-porn">
                   Read More
                 </a>
+                <br />
+                <br />
                 <Divider />
-
-                <h1 className="pt-11">Poverty Porn: the Unethical Way to 'Save' the Poor</h1>
+                <br />
+                <span className={`${saira.className} text-2xl`}>
+                  Poverty Porn: the Unethical Way to 'Save' the Poor
+                </span>
                 <p>By Poko Lim</p>
                 <p>
                   Emaciated children with flies buzzing around reach their hands
@@ -73,11 +89,14 @@ export default function Resources() {
                 <a href="https://issuu.com/issiahk/docs/issia_magazine_4th_edition_/s/20943539">
                   Read More
                 </a>
+                <br />
+                <br />
                 <Divider />
-                <h1 className="pt-11">
+                <br />
+                <span className={`${saira.className} text-2xl`}>
                   Poverty porn? Donnalyn Bartolome's 'kanto-style' birthday
                   party draws mixed reactions
-                </h1>
+                </span>
                 <p>By Kathleen A. Llemit</p>
                 <p>
                   MANILA, Philippines — Less than a month after her baby-themed
@@ -89,11 +108,14 @@ export default function Resources() {
                 <a href="https://www.philstar.com/entertainment/2022/08/16/2203046/poverty-porn-donnalyn-bartolomes-kanto-style-birthday-party-draws-mixed-reactions">
                   Read More
                 </a>
+                <br />
+                <br />
                 <Divider />
-                <h1 className="pt-11">
+                <br />
+                <span className={`${saira.className} text-2xl`}>
                   Darna' director Benedict Mique Jr. tells young filmmakers:
                   Stop poverty porn in PH flicks
-                </h1>
+                </span>
                 <p>By Robert Requintina</p>
                 <p>
                   Benedict Mique Jr., seasoned movie-television screenwriter and
@@ -105,11 +127,14 @@ export default function Resources() {
                 <a href="https://mb.com.ph/2022/11/28/darna-director-benedict-mique-jr-tells-young-filmmakers-stop-poverty-porn-in-ph-flicks/">
                   Read More
                 </a>
+                <br />
+                <br />
                 <Divider />
-                <h1 className="pt-11">
+                <br />
+                <span className={`${saira.className} text-2xl`}>
                   If You're Outraged By This Photo More Than Poverty Itself,
                   Then We've Got a Problem
-                </h1>
+                </span>
                 <p>By ESQUIRE PHILIPPINES</p>
                 <p>
                   It’s easier to cancel a person than the issue itself. And the
@@ -119,7 +144,10 @@ export default function Resources() {
                 <a href="https://www.esquiremag.ph/politics/opinion/the-purpose-of-art-a00203-20210304">
                   Read More
                 </a>
+                <br />
+                <br />
                 <Divider />
+                <br />
               </CardContent>
             </Card>
           </div>
