@@ -55,8 +55,6 @@ export const pages = [
   },
   { label: "Resources", url: "/iteration1/resources" },
   { label: "Groups", url: "/iteration1/groups" },
-  { label: "About Us", url: "/iteration1/about-us" },
-  { label: "Contact Us", url: "/iteration1/contact-us" },
 ];
 
 export default function Navigation() {

@@ -17,6 +17,8 @@ import { Sofia_Sans } from "next/font/google";
 const sofia = Sofia_Sans({ subsets: ["latin"], weight: "800" });
 
 export const links = [
+  { label: "About Us", url: "/iteration1/about-us" },
+  { label: "Contact Us", url: "/iteration1/contact-us" },
   { label: "Privacy", url: "/iteration1/privacy" },
   { label: "Terms & Condition", url: "/iteration1/terms" },
   { label: "Advertising Policy", url: "/iteration1/advertising" },

@@ -47,7 +47,7 @@ export default function Group() {
       <Fragment>
         <Navigation />
         <Box display="flex" justifyContent="center" alignContent="center">
-          <div className="container max-w-screen-md pt-36 ">
+          <div className="container max-w-screen-md pt-36 p-2">
             {group && (
               <Card elevation={0}>
                 <CardMedia component="img" image={group?.image} />

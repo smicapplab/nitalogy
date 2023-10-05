@@ -28,7 +28,7 @@ export default function Resources() {
       <Fragment>
         <Navigation />
         <Box display="flex" justifyContent="center" alignContent="center">
-          <div className="container max-w-screen-lg pt-36 ">
+          <div className="container max-w-screen-lg pt-36 p-2">
             <div className="px-4 py-0 w-full text-4xl md:text-8xl font-bold text-black">
               <span className={saira.className}>DOCUMENTARIES AND FILMS</span>
             </div>
@@ -47,7 +47,7 @@ export default function Resources() {
               ))}
             </Grid>
             <br />
-            <br />
+            {/* <br />
             <br />
 
             <Card variant="outlined">
@@ -149,7 +149,7 @@ export default function Resources() {
                 <Divider />
                 <br />
               </CardContent>
-            </Card>
+            </Card> */}
           </div>
         </Box>
         <Footer />

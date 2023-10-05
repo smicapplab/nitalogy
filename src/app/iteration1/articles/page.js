@@ -74,7 +74,7 @@ export default function Articles() {
       <Fragment>
         <Navigation />
         <Box display="flex" justifyContent="center" alignContent="center">
-          <div className="container max-w-screen-lg pt-36 ">
+          <div className="container max-w-screen-lg pt-36 p-2">
             <div className="flex justify-end pb-10">
               <ArticleNavigation
                 options={options}

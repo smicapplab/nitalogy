@@ -89,7 +89,7 @@ export default function Article() {
       <Navigation />
       <Box display="flex" justifyContent="center" alignContent="center">
         {article && (
-          <div className="container max-w-screen-lg pt-36">
+          <div className="container max-w-screen-lg pt-36 p-2">
             <div className="w-full relative ">
               <img src={article?.image} alt={article?.title} />
               <div className="absolute bottom-0 px-4 py-0 w-full text-4xl sm:text-6xl font-bold text-black">
