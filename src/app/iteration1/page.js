@@ -22,7 +22,7 @@ export default function Home() {
           <div className="max-w-screen-lg pt-20 pl-5 pr-5">
             <div className="relative flex bg-center grayscale hover:grayscale-0">
               <img
-                src="/images/banner1.png"
+                src="/images/hero.gif"
                 alt="hero"
                 className="w-full max-w-screen-lg "
               />

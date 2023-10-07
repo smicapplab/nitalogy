@@ -26,7 +26,7 @@ export default function AboutUs() {
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
                 <img
-                  src="/images/about.png"
+                  src="/images/about.gif"
                   alt="About Us 1"
                   className="w-full"
                 />
