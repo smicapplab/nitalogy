@@ -223,7 +223,7 @@ export default function Navigation() {
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, mr: 2 }}>
-            <img src="/images/logo.png" alt="logo" className="h-16" />
+            <img src="/images/new-logo.png" alt="logo" className="h-16" />
           </Box>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
