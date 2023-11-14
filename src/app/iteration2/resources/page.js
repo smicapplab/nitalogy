@@ -14,8 +14,8 @@ import { films } from "@/data/data";
 import { Saira_Extra_Condensed } from "next/font/google";
 
 const saira = Saira_Extra_Condensed({ subsets: ["latin"], weight: "600" });
-const Footer = lazy(() => import("../../Component/Footer"));
-const NavigationTwo = lazy(() => import("../../Component/NavigationTwo"));
+const Footer = lazy(() => import("../../ComponentTwo/Footer"));
+const NavigationTwo = lazy(() => import("../../ComponentTwo/NavigationTwo"));
 const FilmsCard = lazy(() => import("./FilmsCard"));
 
 export default function Resources() {
