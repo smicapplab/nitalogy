@@ -1,11 +1,13 @@
-import './globals.css'
+import "./globals.css";
+import GoogleAnalytics from "./GoogleAnalytics";
+
 import { Antic } from "next/font/google";
 
 const antic = Antic({ subsets: ["latin"], weight: "400" });
-
 export const metadata = {
-  title: 'Behind The Screen Magazine',
-  description: 'Welcome to our platform dedicated to raising awareness about global issues without resorting to exploitative tactics like poverty porn. We believe that compassion and understanding can be fostered without exploiting the hardships faced by marginalized communities.',
+  title: "Behind The Screen Magazine",
+  description:
+    "Welcome to our platform dedicated to raising awareness about global issues without resorting to exploitative tactics like poverty porn. We believe that compassion and understanding can be fostered without exploiting the hardships faced by marginalized communities.",
   icons: [
     {
       rel: "icon",
@@ -25,12 +27,15 @@ export const metadata = {
       url: "/icon/apple-touch-icon.png",
     },
   ],
-}
+};
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={ antic.className }>
-      <body suppressHydrationWarning={true} >{children}</body>
+    <html lang="en" className={antic.className}>
+      <body suppressHydrationWarning={true}>
+        <GoogleAnalytics />
+        {children}
+      </body>
     </html>
-  )
+  );
 }
