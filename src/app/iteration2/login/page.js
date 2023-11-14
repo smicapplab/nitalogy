@@ -19,8 +19,8 @@ import { useFacebookLogin } from "react-facebook-login-hook";
 import { Saira_Extra_Condensed } from "next/font/google";
 
 const saira = Saira_Extra_Condensed({ subsets: ["latin"], weight: "600" });
-const Navigation = lazy(() => import("../../Component/Navigation"));
-const Footer = lazy(() => import("../../Component/Footer"));
+const NavigationTwo = lazy(() => import("../../ComponentTwo/NavigationTwo"));
+const Footer = lazy(() => import("../../ComponentTwo/Footer"));
 
 export default function Login() {
   const router = useRouter();
@@ -68,7 +68,7 @@ export default function Login() {
   return (
     <ThemeProvider theme={LightTheme}>
       <Fragment>
-        <Navigation />
+        <NavigationTwo />
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="container max-w-screen-sm pt-36 ">
             <Card variant="outlined">

@@ -15,7 +15,7 @@ import { Saira_Extra_Condensed } from "next/font/google";
 
 const saira = Saira_Extra_Condensed({ subsets: ["latin"], weight: "600" });
 const Footer = lazy(() => import("../../Component/Footer"));
-const Navigation = lazy(() => import("../../Component/Navigation"));
+const NavigationTwo = lazy(() => import("../../Component/NavigationTwo"));
 const FilmsCard = lazy(() => import("./FilmsCard"));
 
 export default function Resources() {
@@ -26,7 +26,7 @@ export default function Resources() {
   return (
     <ThemeProvider theme={LightTheme}>
       <Fragment>
-        <Navigation />
+        <NavigationTwo />
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="container max-w-screen-lg pt-36 p-2">
             <div className="px-4 py-0 w-full text-4xl md:text-8xl font-bold text-black">

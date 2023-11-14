@@ -3,14 +3,14 @@
 import { Fragment, lazy } from "react";
 import { Box, Card, CardContent, ThemeProvider } from "@mui/material";
 import LightTheme from "../theme";
-const Footer = lazy(() => import("../../Component/Footer"));
-const Navigation = lazy(() => import("../../Component/Navigation"));
+import NavigationTwo from "@/app/ComponentTwo/NavigationTwo";
+const Footer = lazy(() => import("../../ComponentTwo/Footer"));
 
 export default function Advertising() {
   return (
     <ThemeProvider theme={LightTheme}>
       <Fragment>
-        <Navigation />
+        <NavigationTwo />
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="container max-w-screen-lg pt-36 ">
             <Card variant="outlined">

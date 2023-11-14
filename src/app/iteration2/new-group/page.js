@@ -12,12 +12,12 @@ import {
   ThemeProvider,
 } from "@mui/material";
 import LightTheme from "../theme";
-import InputText from "@/app/Component/InputText";
+import InputText from "@/app/ComponentTwo/InputText";
 import { toBase64 } from "@/helper/Image";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-const Footer = lazy(() => import("../../Component/Footer"));
-const Navigation = lazy(() => import("../../Component/Navigation"));
+const Footer = lazy(() => import("../../ComponentTwo/Footer"));
+const NavigationTwo = lazy(() => import("../../ComponentTwo/NavigationTwo"));
 
 export default function NewGroup() {
   const [newGroup, setNewGroup] = useState({});
@@ -67,7 +67,7 @@ export default function NewGroup() {
   return (
     <ThemeProvider theme={LightTheme}>
       <Fragment>
-        <Navigation />
+        <NavigationTwo />
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="container max-w-screen-md pt-36 ">
             <Card>

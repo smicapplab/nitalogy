@@ -3,9 +3,9 @@
 import { Fragment, lazy, useState } from "react";
 import { Alert, AlertTitle, Box, Button, ThemeProvider } from "@mui/material";
 import LightTheme from "../theme";
-import InputText from "@/app/Component/InputText";
-const Footer = lazy(() => import("../../Component/Footer"));
-const Navigation = lazy(() => import("../../Component/Navigation"));
+import InputText from "@/app/ComponentTwo/InputText";
+const Footer = lazy(() => import("../../ComponentTwo/Footer"));
+const NavigationTwo = lazy(() => import("../../ComponentTwo/NavigationTwo"));
 
 export default function ContactUs() {
   const [contact, setContact] = useState({});
@@ -24,7 +24,7 @@ export default function ContactUs() {
   return (
     <ThemeProvider theme={LightTheme}>
       <Fragment>
-        <Navigation />
+        <NavigationTwo />
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="container max-w-screen-md pt-36 ">
             <h1 className="text-xl pb-11">Contact Us</h1>

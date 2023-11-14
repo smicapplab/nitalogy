@@ -9,8 +9,8 @@ import axios from "axios";
 import { Saira_Extra_Condensed } from "next/font/google";
 
 const saira = Saira_Extra_Condensed({ subsets: ["latin"], weight: "600" });
-const Footer = lazy(() => import("../../Component/Footer"));
-const Navigation = lazy(() => import("../../Component/Navigation"));
+const Footer = lazy(() => import("../../ComponentTwo/Footer"));
+const NavigationTwo = lazy(() => import("../../ComponentTwo/NavigationTwo"));
 const GroupCard = lazy(() => import("./GroupCard"));
 
 const CustomTabPanel = (props) => {
@@ -76,7 +76,7 @@ export default function Groups() {
   return (
     <ThemeProvider theme={LightTheme}>
       <Fragment>
-        <Navigation />
+        <NavigationTwo />
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="container max-w-screen-lg pt-36 p-2">
             <div className="flex justify-between pb-10">

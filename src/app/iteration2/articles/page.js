@@ -4,13 +4,13 @@ import { Fragment, lazy, useEffect, useState } from "react";
 import { Box, Grid, ThemeProvider } from "@mui/material";
 import LightTheme from "../theme";
 import { articles } from "@/data/data";
-import ArticleCardMain from "@/app/Component/ArticleCardMain";
+import ArticleCardMain from "@/app/ComponentTwo/ArticleCardMain";
 import { useSearchParams } from "next/navigation";
 import { Sofia_Sans } from "next/font/google";
 
 const sofia = Sofia_Sans({ subsets: ["latin"], weight: "800" });
-const Footer = lazy(() => import("../../Component/Footer"));
-const Navigation = lazy(() => import("../../Component/Navigation"));
+const Footer = lazy(() => import("../../ComponentTwo/Footer"));
+const NavigationTwo = lazy(() => import("../../ComponentTwo/NavigationTwo"));
 const ArticleNavigation= lazy(() => import("./components/ArticleNavigation"));
 
 
@@ -72,7 +72,7 @@ export default function Articles() {
   return (
     <ThemeProvider theme={LightTheme}>
       <Fragment>
-        <Navigation />
+        <NavigationTwo />
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="container max-w-screen-lg pt-36 p-2">
             <div className="flex justify-end pb-10">

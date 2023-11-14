@@ -12,8 +12,8 @@ import {
 import LightTheme from "../theme";
 import axios from "axios";
 import GroupCard from "../groups/GroupCard";
-const Footer = lazy(() => import("../../Component/Footer"));
-const Navigation = lazy(() => import("../../Component/Navigation"));
+const Footer = lazy(() => import("../../ComponentTwo/Footer"));
+const NavigationTwo = lazy(() => import("../../ComponentTwo/NavigationTwo"));
 
 export default function Group() {
   const [localUser, setLocalUser] = useState(null);
@@ -35,7 +35,7 @@ export default function Group() {
   return (
     <ThemeProvider theme={LightTheme}>
       <Fragment>
-        <Navigation />
+        <NavigationTwo />
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="container max-w-screen-md pt-36 ">
             <Card elevation={0}>

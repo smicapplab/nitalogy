@@ -6,15 +6,15 @@ import { ShareSocial } from "react-share-social";
 import { useRouter, useSearchParams } from "next/navigation";
 import { articles } from "@/data/data";
 import LightTheme from "../theme";
-import InputText from "@/app/Component/InputText";
+import InputText from "@/app/ComponentTwo/InputText";
 import axios from "axios";
 import { format } from "date-fns";
 import { Saira_Extra_Condensed, Sofia_Sans } from "next/font/google";
+import NavigationTwo from "@/app/ComponentTwo/NavigationTwo";
 const sofia = Sofia_Sans({ subsets: ["latin"], weight: "800" });
 const saira = Saira_Extra_Condensed({ subsets: ["latin"], weight: "600" });
-const Footer = lazy(() => import("../../Component/Footer"));
-const Navigation = lazy(() => import("../../Component/Navigation"));
-const ArticleCardMain = lazy(() => import("../../Component/ArticleCardMain"));
+const Footer = lazy(() => import("../../ComponentTwo/Footer"));
+const ArticleCardMain = lazy(() => import("../../ComponentTwo/ArticleCardMain"));
 
 export default function Article() {
   const [article, setArticle] = useState();
@@ -86,7 +86,7 @@ export default function Article() {
 
   return (
     <ThemeProvider theme={LightTheme}>
-      <Navigation />
+      <NavigationTwo />
       <Box display="flex" justifyContent="center" alignContent="center">
         {article && (
           <div className="container max-w-screen-lg pt-36 p-2">
@@ -136,7 +136,6 @@ export default function Article() {
             />
             <div
               dangerouslySetInnerHTML={{ __html: article.content }}
-              className="sm:columns-2"
             />
             <br />
             <Divider />

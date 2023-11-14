@@ -5,9 +5,9 @@ import { Box, Button, ThemeProvider } from "@mui/material";
 import LightTheme from "../theme";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import NavigationTwo from "@/app/ComponentTwo/NavigationTwo";
 const ImgMediaCard = lazy(() => import("./EventCard"));
-const Footer = lazy(() => import("../../Component/Footer"));
-const Navigation = lazy(() => import("../../Component/Navigation"));
+const Footer = lazy(() => import("../../ComponentTwo/Footer"));
 
 const e = {
   title: "Event Title",
@@ -43,7 +43,7 @@ export default function AdvocacyAndAction() {
   return (
     <ThemeProvider theme={LightTheme}>
       <Fragment>
-        <Navigation />
+        <NavigationTwo />
         {userEvents && (
           <Box display="flex" justifyContent="center" alignContent="center">
             <div className="container max-w-screen-xl pt-36 ">

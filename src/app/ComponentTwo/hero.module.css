@@ -1,0 +1,30 @@
+.heroContainer {
+  color: #fff;
+  width: 100%;
+  background-image: url("/images/banner1.png");
+  height: 800px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-color: blueviolet;
+}
+
+div.heroMobileContainer {
+    padding: 5px;
+}
+
+.heroMobileContainer {
+  display: flex;
+  align-content: flex-end;
+  justify-content: right;
+  color: #fff;
+  height: 400px;
+  padding: 5px;
+  width: 100%;
+  background-image: url("/images/banner1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: blueviolet;
+}

@@ -17,8 +17,8 @@ import { format } from "date-fns";
 import { Saira_Extra_Condensed } from "next/font/google";
 
 const saira = Saira_Extra_Condensed({ subsets: ["latin"], weight: "600" });
-const Footer = lazy(() => import("../../Component/Footer"));
-const Navigation = lazy(() => import("../../Component/Navigation"));
+const Footer = lazy(() => import("../../ComponentTwo/Footer"));
+const NavigationTwo = lazy(() => import("../../ComponentTwo/NavigationTwo"));
 
 export default function Group() {
   const searchParams = useSearchParams();
@@ -45,7 +45,7 @@ export default function Group() {
   return (
     <ThemeProvider theme={LightTheme}>
       <Fragment>
-        <Navigation />
+        <NavigationTwo />
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="container max-w-screen-md pt-36 p-2">
             {group && (

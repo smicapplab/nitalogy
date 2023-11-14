@@ -5,18 +5,18 @@ import { Box, Grid, ThemeProvider } from "@mui/material";
 import LightTheme from "./theme";
 import { articles } from "@/data/data";
 import { Saira_Extra_Condensed } from "next/font/google";
+import NavigationTwo from "../ComponentTwo/NavigationTwo";
 
-const ArticleCard = lazy(() => import("../Component/ArticleCard"));
-const ArticleCardMain = lazy(() => import("../Component/ArticleCardMain"));
-const Navigation = lazy(() => import("../Component/Navigation"));
-const Footer = lazy(() => import("../Component/Footer"));
+const ArticleCard = lazy(() => import("../ComponentTwo/ArticleCard"));
+const ArticleCardMain = lazy(() => import("../ComponentTwo/ArticleCardMain"));
+const Footer = lazy(() => import("../ComponentTwo/Footer"));
 const saira = Saira_Extra_Condensed({ subsets: ["latin"], weight: "600" });
 
 export default function Home() {
   return (
     <ThemeProvider theme={LightTheme}>
       <Fragment>
-        <Navigation />
+        <NavigationTwo />
         {/* <Hero /> */}
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="max-w-screen-lg pt-20 pl-5 pr-5">

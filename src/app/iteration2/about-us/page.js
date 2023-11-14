@@ -4,10 +4,10 @@ import { Fragment, lazy, useEffect } from "react";
 import { Box, Grid, ThemeProvider } from "@mui/material";
 import LightTheme from "../theme";
 import { Saira_Extra_Condensed } from "next/font/google";
+import NavigationTwo from "@/app/ComponentTwo/NavigationTwo";
 
 const saira = Saira_Extra_Condensed({ subsets: ["latin"], weight: "600" });
-const Footer = lazy(() => import("../../Component/Footer"));
-const Navigation = lazy(() => import("../../Component/Navigation"));
+const Footer = lazy(() => import("../../ComponentTwo/Footer"));
 
 export default function AboutUs() {
   useEffect(() => {}, []);
@@ -15,7 +15,7 @@ export default function AboutUs() {
   return (
     <ThemeProvider theme={LightTheme}>
       <Fragment>
-        <Navigation />
+        <NavigationTwo />
         <Box display="flex" justifyContent="center" alignContent="center">
           <div className="container max-w-screen-xl pt-36 ">
             <div className="px-4 py-0 w-full text-4xl md:text-8xl font-bold text-black">
