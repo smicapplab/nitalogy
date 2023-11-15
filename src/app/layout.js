@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={antic.className}>
       <body suppressHydrationWarning={true}>
-        <GoogleAnalytics />
+        <GoogleAnalytics /> 
         {children}
       </body>
     </html>
