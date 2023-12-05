@@ -26,12 +26,12 @@ export default function Home() {
                 alt="hero"
                 className="w-full max-w-screen-lg "
               />
+                <div className="absolute bottom-1 text-white left-0 px-4 py-0 w-full sm:text-7xl text-5xl font-bold text-black">
+                  <span className={saira.className}>BEHIND</span>
+                </div>
             </div>
             <Grid container spacing={0}>
               <Grid item xs={12} md={6}>
-                <div className="px-4 py-0 w-full sm:text-7xl text-5xl font-bold text-black">
-                  <span className={saira.className}>BEHIND</span>
-                </div>
                 <div className="px-4 py-0 w-full sm:text-7xl text-5xl font-bold text-black">
                   <span className={saira.className}>THE SCREEN</span>
                 </div>
