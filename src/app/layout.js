@@ -1,7 +1,7 @@
 import "./globals.css";
 import GoogleAnalytics from "./GoogleAnalytics";
-
 import { Antic } from "next/font/google";
+import GoogleSearch from "./GoogleSearch";
 
 const antic = Antic({ subsets: ["latin"], weight: "400" });
 export const metadata = {
@@ -32,6 +32,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={antic.className}>
+      <GoogleSearch />
       <body suppressHydrationWarning={true}>
         <GoogleAnalytics /> 
         {children}

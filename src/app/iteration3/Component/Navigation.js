@@ -14,6 +14,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useRouter } from "next/navigation";
+import SearchIcon from '@mui/icons-material/Search';
 import {
   Collapse,
   Divider,
@@ -61,6 +62,7 @@ export default function Navigation() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [showSearch, setShowSearch] = useState(false);
   const [openNav, setOpenNav] = useState(false);
   const router = useRouter();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -278,6 +280,9 @@ export default function Navigation() {
                 )}
               </Fragment>
             ))}
+            <IconButton size="large" onClick={ ()=> setShowSearch( !showSearch ) }>
+              <SearchIcon fontSize="inherit" />
+            </IconButton>
           </Box>
 
           {loggedInUser ? (
@@ -328,6 +333,9 @@ export default function Navigation() {
             </Box>
           )}
         </Toolbar>
+          <div className={`text-black ${ showSearch ? "visible h-20" : "invisible h-0" }`}>
+            <div className="gcse-search"></div>
+          </div>
       </Container>
     </AppBar>
   );
